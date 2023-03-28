@@ -8,7 +8,9 @@ interface Props {
 function Message({ children, onShowMessage }: Props) {
   return (
     <ThemeContext.Consumer>
-      {(theme) => <div onClick={() => onShowMessage('messageComponent')}>{children + theme}</div>}
+      {(theme) => (
+        <div onClick={() => onShowMessage('messageComponent')}>{`${children}${theme}`}</div>
+      )}
     </ThemeContext.Consumer>
   )
 }
