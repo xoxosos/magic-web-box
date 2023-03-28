@@ -12,7 +12,7 @@ function App() {
     console.log(theme)
   }
   const message = 'this is a message prop!'
-  const showMessage = (itemName: String) => {
+  const showMessage = (itemName: string) => {
     console.log(itemName)
   }
   return (

@@ -1,8 +1,8 @@
 import ThemeContext from './ThemeContext'
 
 interface Props {
-  children: String
-  onShowMessage: (itemName: String) => void
+  children: string
+  onShowMessage: (itemName: string) => void
 }
 
 function Message({ children, onShowMessage }: Props) {

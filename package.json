@@ -3,23 +3,42 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "lint-staged": {
+    "*.{js,jsx,tsx,ts}": [
+      "npm run lint"
+    ]
+  },
   "scripts": {
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix --quiet ./",
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "husky install"
   },
   "dependencies": {
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "8.0.0",
+    "pnpm": "^8.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rsuite": "^5.29.0"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.5.1",
+    "@commitlint/config-conventional": "^17.4.4",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
     "@vitejs/plugin-react": "^3.1.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "husky": "^8.0.3",
     "less": "^4.1.3",
+    "lint-staged": "^13.2.0",
     "prettier": "^2.8.7",
     "typescript": "^4.9.3",
-    "vite": "^4.2.0"
+    "vite": "^4.2.0",
+    "vite-plugin-eslint": "^1.8.1"
   }
 }
