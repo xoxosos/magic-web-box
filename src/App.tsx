@@ -10,7 +10,7 @@ import HomeIcon from '@rsuite/icons/legacy/Home'
 import { useState } from 'react'
 import { Container, Content, CustomProvider, Footer, Header, Nav, Navbar } from 'rsuite'
 import zhCN from 'rsuite/locales/zh_CN'
-import './App.css'
+import './App.less'
 
 import SettingDropDown from './components/SettingDropDown'
 import MainContent from './components/MainContent'
@@ -45,7 +45,7 @@ function App() {
               </Nav>
             </Navbar>
           </Header>
-          <Content className="main-content">
+          <Content>
             <MainContent />
           </Content>
           <Footer>Footer</Footer>
