@@ -1,4 +1,4 @@
-import ThemeContext from './ThemeContext'
+import ThemeContext from '../context/ThemeContext'
 
 interface Props {
   children: string

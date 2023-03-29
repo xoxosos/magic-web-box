@@ -2,14 +2,17 @@ import { Input, InputGroup } from 'rsuite'
 import SearchIcon from '@rsuite/icons/Search'
 import { useContext, useEffect, useState } from 'react'
 import useFetchData from '../hooks/useFecthData'
-import weatherContext from './WeatherContext'
+import weatherContext from '../context/WeatherContext'
+
 interface Props {
   fetchCityData: () => void
 }
+
 const styles = {
   width: 600,
   marginBottom: 10
 }
+
 function SearchInput() {
   const [cityName, setCityName] = useState('武汉')
   const handleChange = (value: string) => {

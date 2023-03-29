@@ -1,11 +1,17 @@
 import SearchInput from './SearchInput'
 import WeatherBody from './WeatherBody'
-import WeatherContext from './WeatherContext'
+import WeatherContext from '../context/WeatherContext'
 import { useEffect, useMemo, useState } from 'react'
-import useFetchData from '../hooks/useFecthData'
+
+interface weatherDataType {
+  daily: []
+
+  [key: string]: unknown
+}
+
 function MainContent() {
-  const [weatherData, setWeatherData] = useState({})
-  const handleWeatherData = (data: object) => {
+  const [weatherData, setWeatherData] = useState<weatherDataType>({ daily: [] })
+  const handleWeatherData = (data: weatherDataType) => {
     console.log('返回到父组件的data', data)
     setWeatherData(data)
     console.log('设置weatherData', weatherData)
@@ -29,4 +35,5 @@ function MainContent() {
     </div>
   )
 }
+
 export default MainContent

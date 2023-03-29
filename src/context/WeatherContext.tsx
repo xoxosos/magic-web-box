@@ -1,18 +1,24 @@
 import React from 'react'
 
+interface weatherDataType {
+  daily: []
+
+  [key: string]: unknown
+}
+
 interface WeatherContextType {
   weatherData: {
     daily: []
     [key: string]: unknown
   }
-  handleWeatherData: (i: object) => void
+  handleWeatherData: (weatherData: weatherDataType) => void
 }
 
 const obj: WeatherContextType = {
   weatherData: {
     daily: []
   },
-  handleWeatherData: (i: object) => {
+  handleWeatherData: (weatherData: weatherDataType) => {
     // TODO: handle weather data
   }
 }

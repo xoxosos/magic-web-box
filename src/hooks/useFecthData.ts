@@ -11,7 +11,7 @@ export default function useFetchData() {
     }
   }
   const fetchWeatherData = async (id: string, cityName: string) => {
-    const apiUrl = `https://devapi.qweather.com/v7/weather/3d?location=${id}&key=${apiKey}`
+    const apiUrl = `https://devapi.qweather.com/v7/weather/7d?location=${id}&key=${apiKey}`
     const response = await fetch(apiUrl)
     const data = await response.json()
     console.log(data)
