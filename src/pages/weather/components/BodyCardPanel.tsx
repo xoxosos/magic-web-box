@@ -4,10 +4,16 @@ import dayjs from 'dayjs'
 interface weatherDataType {
   title: string
   weatherData: {
-    [key: string]: any
+    [key: string]: string | number
   }
 }
 
+/**
+ * @description: 今日天气内容
+ * @param weatherData
+ * @param title
+ * @constructor
+ */
 function BodyCardPanel({ weatherData, title }: weatherDataType) {
   const dateStr = weatherData['fxDate'] // 指定日期的字符串表示
   const dayOfWeek = dayjs(dateStr).format('dddd') // 获取星期几

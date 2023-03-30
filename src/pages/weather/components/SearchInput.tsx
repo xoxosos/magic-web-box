@@ -1,12 +1,8 @@
 import { Input, InputGroup } from 'rsuite'
 import SearchIcon from '@rsuite/icons/Search'
-import { useContext, useEffect, useState } from 'react'
-import useFetchData from '../hooks/useFecthData'
-import weatherContext from '../context/WeatherContext'
-
-interface Props {
-  fetchCityData: () => void
-}
+import { useState } from 'react'
+import useFetchData from '../../../hooks/useFecthData'
+import { useWeatherContext } from '../../../context/WeatherContext'
 
 const styles = {
   width: 600,
@@ -19,7 +15,7 @@ function SearchInput() {
     setCityName(value)
   }
   const { fetchCityData } = useFetchData()
-  const context = useContext(weatherContext)
+  const context = useWeatherContext()
   const handleFetchCityData = async (cityName: string) => {
     const res = await fetchCityData(cityName)
     console.log(res)

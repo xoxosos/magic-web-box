@@ -1,5 +1,8 @@
 import React from 'react'
 
+interface Props {
+  children: React.ReactNode
+}
 interface weatherDataType {
   daily: []
 
@@ -19,10 +22,20 @@ const obj: WeatherContextType = {
     daily: []
   },
   handleWeatherData: (weatherData: weatherDataType) => {
-    // TODO: handle weather data
+    console.log(weatherData)
   }
 }
 
 const WeatherContext = React.createContext(obj)
-
-export default WeatherContext
+export const useWeatherContext = () => React.useContext(WeatherContext)
+export const WeatherProvider: React.FC<Props> = ({ children }) => {
+  const [weatherData, setWeatherData] = React.useState<weatherDataType>({ daily: [] })
+  const handleWeatherData = (data: weatherDataType) => {
+    setWeatherData(data)
+  }
+  const weatherContext = {
+    weatherData,
+    handleWeatherData
+  }
+  return <WeatherContext.Provider value={weatherContext}>{children}</WeatherContext.Provider>
+}

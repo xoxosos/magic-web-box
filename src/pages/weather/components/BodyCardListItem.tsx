@@ -1,8 +1,8 @@
-import { Panel, Stack, FlexboxGrid } from 'rsuite'
+import { FlexboxGrid, Panel, Stack } from 'rsuite'
 
 interface weatherDataType {
   weatherData: {
-    [key: string]: any
+    [key: string]: string | number
   }
 }
 
