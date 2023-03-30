@@ -4,6 +4,7 @@ export default function useFetchData() {
   const fetchCityData = async (cityName: string) => {
     const apiUrl = `https://geoapi.qweather.com/v2/city/lookup?location=${cityName}&key=${apiKey}`
     const response = await fetch(apiUrl)
+
     const data = await response.json()
     // 返回的城市数据包括区(数组第一个数据为当前城市)
     if (data?.location.length > 0) {

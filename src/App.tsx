@@ -13,6 +13,7 @@ export const App = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark')
   }
   return (
+    // 一个应用只有一个QueryClientProvider组件
     <CustomProvider locale={zhCN} theme={theme}>
       <div className="show-fake-browser navbar-page App">
         <Container>
