@@ -2,9 +2,13 @@ import { WeatherProvider } from '../../context/WeatherContext'
 import { WeatherView } from '../../pages/weather/WeatherView'
 import { Content } from 'rsuite'
 import LoginView from '../../pages/login/LoginView'
+import { useTokenContext } from '../../context/TokenContext'
 
-const token = localStorage.getItem('token')
 function ContentLayout() {
+  // 根据token来判断是否登录
+  const localStorageToken = localStorage.getItem('token')
+  const { token, setToken } = useTokenContext()
+  if (localStorageToken) setToken(localStorageToken)
   return token ? (
     <Content>
       <div className="main-content">

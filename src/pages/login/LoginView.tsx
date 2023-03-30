@@ -1,14 +1,18 @@
 import { Button, ButtonToolbar, Content, FlexboxGrid, Form, Panel } from 'rsuite'
 
 import request from '../../utils/useRequest'
+import { useTokenContext } from '../../context/TokenContext'
 
 function LoginView() {
+  // 使用setToken来更新token 重新渲染
+  const { setToken } = useTokenContext()
   interface Post {
     data: { token: string }
   }
   const handleSubmit = async () => {
     const res = await request.get<Post>('/getToken')
     localStorage.setItem('token', res?.data?.data?.token)
+    setToken(res?.data?.data?.token)
     console.log(localStorage.getItem('token'))
   }
   return (

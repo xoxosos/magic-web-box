@@ -16,7 +16,7 @@ const CustomDropdown = ({ theme, toggleTheme, ...props }: Props) => (
     <Dropdown.Item>Export PDF</Dropdown.Item>
     <Dropdown.Item>Export HTML</Dropdown.Item>
     <Dropdown.Item>Settings</Dropdown.Item>
-    <Dropdown.Item>About</Dropdown.Item>
+    <Dropdown.Item>注销</Dropdown.Item>
   </Dropdown>
 )
 
