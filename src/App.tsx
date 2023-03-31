@@ -1,11 +1,10 @@
 import './App.less'
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom'
 import { AuthProvider } from './context/auth/AuthProvider'
-import ContentLayout from './layouts/content/ContentLayout'
-import PrivateRoute from './pages/PrivateRoute'
 import LoginView from './pages/login/LoginView'
-import { ProductView } from './pages/products/ProductView'
+import { HomeView } from './pages/HomeView'
+import PrivateRoute from './pages/PrivateRoute'
 import PageNotFound from './pages/PageNotFound'
 
 export const App = () => {
@@ -13,17 +12,17 @@ export const App = () => {
     <Router>
       <AuthProvider>
         <Routes>
+          <Route path="*" element={<PageNotFound />} />
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/login" element={<LoginView />} />
           <Route
-            path="/"
+            path="/home/*"
             element={
               <PrivateRoute>
-                <ContentLayout />
+                <HomeView />
               </PrivateRoute>
             }
           />
-          <Route path="/login" element={<LoginView />}></Route>
-          <Route path="/product" element={<ProductView />} />
-          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </AuthProvider>
     </Router>

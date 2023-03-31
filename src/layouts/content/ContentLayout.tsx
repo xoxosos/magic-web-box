@@ -1,16 +1,10 @@
-import { WeatherProvider } from '../../context/WeatherContext'
-import { WeatherView } from '../../pages/weather/WeatherView'
 import { Content } from 'rsuite'
 
-function ContentLayout() {
+function ContentLayout({ children }: any) {
   return (
     <Content>
       <div className="main-content">
-        <div className="main-content-search">
-          <WeatherProvider>
-            <WeatherView />
-          </WeatherProvider>
-        </div>
+        <div className="main-content-search">{children}</div>
       </div>
     </Content>
   )

@@ -22,14 +22,14 @@ function SearchInput() {
     context.handleWeatherData(res || {})
   }
   return (
-    <>
+    <div className="search-input">
       <InputGroup inside style={styles}>
         <Input placeholder="请输入需要查询的城市名" value={cityName} onChange={handleChange} />
         <InputGroup.Button onClick={() => handleFetchCityData(cityName)}>
           <SearchIcon />
         </InputGroup.Button>
       </InputGroup>
-    </>
+    </div>
   )
 }
 

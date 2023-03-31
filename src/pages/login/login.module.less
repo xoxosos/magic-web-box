@@ -1,0 +1,84 @@
+.login-form {
+  background: linear-gradient(to right, #ff5f6d, #ffc371);
+  animation: gradient 15s ease infinite;
+  display: flex;
+}
+
+
+.login-button {
+  width: 150px;
+  height: 60px;
+  border: 3px solid #315cfd !important;
+  border-radius: 45px !important;
+  transition: all 0.3s !important;
+  cursor: pointer;
+  background: white !important;
+  font-size: 1.2em !important;
+  font-weight: 550 !important;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.login-button:hover {
+  background: #315cfd !important;
+  color: white !important;
+  font-size: 1.5em !important;
+}
+
+.link {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  font-size: 8px !important;
+  font-weight: bold !important;
+  padding: 10px 20px;
+  border-radius: 30px;
+  background: linear-gradient(to right, #ff5f6d, #ffc371);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease !important;
+}
+
+.link:hover {
+  font-size: 15px !important;
+  transform: translateY(-5px) !important;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.link .text {
+  transition: all 0.3s ease !important;
+  transform: translateX(100%);
+}
+
+.link:hover .text {
+  transform: translateX(0) !important;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.login-form-card {
+  box-shadow: 12px 12px 23px #a8928b, -12px -12px 23px #f4d3c6;
+
+  &.rs-panel {
+    border: none;
+    border-radius: 40px;
+
+    &.rs-panel-bordered {
+      border: none;
+    }
+  }
+}
+
+.my-login-form-card-mixin() {
+  .login-form-card;
+}

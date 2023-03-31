@@ -25,6 +25,7 @@ function BodyCardPanel({ weatherData, title }: weatherDataType) {
   }
   return (
     <Panel
+      className="weather-card"
       header={
         <Stack justifyContent="space-between">
           <span style={{ fontSize: '20px' }}>{title}</span>

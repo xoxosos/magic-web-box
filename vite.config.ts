@@ -22,10 +22,12 @@ export default defineConfig({
     }
   },
   css: {
-    // 预处理器配置项
+    modules: {
+      localsConvention: 'camelCaseOnly'
+    },
     preprocessorOptions: {
       less: {
-        math: 'always'
+        javascriptEnabled: true
       }
     }
   }

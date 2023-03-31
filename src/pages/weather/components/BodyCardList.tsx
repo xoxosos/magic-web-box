@@ -9,7 +9,7 @@ function BodyCardList() {
   const { weatherData } = useWeatherContext()
   const daily = weatherData?.daily?.slice(1)
   return daily.length > 0 ? (
-    <div>
+    <div className="weather-card-list">
       {daily.map((i, index) => {
         return <BodyCardListItem key={index} weatherData={i}></BodyCardListItem>
       })}

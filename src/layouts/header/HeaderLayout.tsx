@@ -1,45 +1,49 @@
 import SettingDropDown from '../../components/SettingDropDown'
 import { Header, Nav, Navbar } from 'rsuite'
 import HomeIcon from '@rsuite/icons/legacy/Home'
-import React, { FC, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react'
+import { Link, useLocation } from 'react-router-dom'
 
 type themeUnionType = 'dark' | 'light' | 'high-contrast' | undefined
+
 interface Props {
   theme: themeUnionType
   toggleTheme: () => void
 }
-export const HeaderLayout: FC<Props> = ({ theme, toggleTheme }) => {
-  const [activeKey, setActiveKey] = useState('1')
+
+export const HeaderLayout: React.FC<Props> = ({ theme, toggleTheme }) => {
+  const { pathname } = useLocation()
+  const [activeKey, setActiveKey] = useState(pathname || 'home')
+  //当 exact 被设置为 true 时，只有当路由路径与当前路径完全匹配时，才会激活该路由。
+  // @eslint ignore
   const NavLink = React.forwardRef(({ href, children, ...rest }: any, ref) => (
-    <Link ref={ref} to={href} {...rest}>
+    <Link ref={ref} exact="true" to={href} {...rest}>
       {children}
     </Link>
   ))
-  const handleSelect = (value: string) => {
-    console.log(value)
-    setActiveKey(value)
-  }
+  NavLink.displayName = 'NavLink'
+  const handleSelect = (value: string) => setActiveKey(value)
+
   return (
     <Header>
-      <Navbar appearance="inverse">
+      <Navbar className="My-NavBar" appearance="inverse">
         <Navbar.Brand>
-          <p style={{ color: '#fff' }}>Brand</p>
+          <p style={{ color: '#fff' }}>React By Pglin</p>
         </Navbar.Brand>
         <Nav onSelect={(e) => handleSelect(e)} activeKey={activeKey}>
-          <Nav.Item as={NavLink} eventKey="1" href="/" icon={<HomeIcon />}>
-            Home
+          <Nav.Item as={NavLink} eventKey="/home" href="/home" icon={<HomeIcon />}>
+            主页
           </Nav.Item>
           <Nav.Item as={NavLink} eventKey="2" href="/login">
-            News
+            关于
           </Nav.Item>
-          <Nav.Item as={NavLink} eventKey="3" href="/product">
-            Products
+          <Nav.Item as={NavLink} eventKey="/home/product" href="/home/product">
+            其他
           </Nav.Item>
-          <Nav.Menu eventKey="2-1" title="About">
-            <Nav.Item eventKey="4">Company</Nav.Item>
-            <Nav.Item eventKey="5">Team</Nav.Item>
-            <Nav.Item eventKey="6">Contact</Nav.Item>
+          <Nav.Menu eventKey="2-1" title="应用">
+            <Nav.Item eventKey="4">天气APP</Nav.Item>
+            <Nav.Item eventKey="5">TodoList</Nav.Item>
+            <Nav.Item eventKey="6">...</Nav.Item>
           </Nav.Menu>
         </Nav>
         <Nav pullRight>

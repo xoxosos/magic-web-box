@@ -1,27 +1,55 @@
+
 #root {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 .App {
-  background-color: rgb(247,247,250);
+  background-color: var(--rs-body);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
+
 main {
   //display: flex;
   padding: 20px;
   background-clip: content-box;
-  background-color: white;
+  background-color: var(--rs-body);
 }
+
 .main-content {
   display: flex;
-  .main-content-search{
+
+  .main-content-search {
     margin: auto;
   }
 }
-.login-content{
+
+.login-content {
   width: 100%;
   margin: auto;
+  height: 100vh;
 }
+
+
+.My-NavBar {
+  background: linear-gradient(to right, #ff00ff, #00ffff, #ffff00) !important;
+  transition: background-color 1s initial !important;
+}
+
+.My-NavBar:hover {
+  background: linear-gradient(to right, #ff0000, #00ff00, #0000ff) !important;
+
+}
+
+.rs-navbar-inverse .rs-navbar-item.rs-navbar-item-active, .rs-navbar-inverse .rs-dropdown .rs-dropdown-menu-active ~ .rs-dropdown-toggle {
+  background-color: indianred !important;
+  border-bottom: 2px solid black;
+}
+
+.rs-navbar-item:hover {
+  background-color: #d39494 !important;
+}
+
