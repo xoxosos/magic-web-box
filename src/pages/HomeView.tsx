@@ -4,11 +4,14 @@ import { HeaderLayout } from '../layouts/header/HeaderLayout'
 import ContentLayout from '../layouts/content/ContentLayout'
 
 import { useState } from 'react'
+import { useTokenContext } from '../context/auth/AuthContext'
 
 type themeUnionType = 'dark' | 'light' | 'high-contrast' | undefined
 
 export const HomeView = () => {
   const [theme, setTheme] = useState<themeUnionType>('light')
+  const { token } = useTokenContext()
+  console.log(token)
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark')
   }

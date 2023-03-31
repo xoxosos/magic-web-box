@@ -3,13 +3,15 @@ import { Button, ButtonToolbar, Content, FlexboxGrid, Form, Panel } from 'rsuite
 import request from '../../utils/useRequest'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useTokenContext } from '../../context/auth/AuthContext'
 
 function LoginView() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
-
   // 使用setToken来更新token 重新渲染
+  const { setToken } = useTokenContext()
+
   interface Post {
     data: { token: string }
   }
@@ -18,7 +20,7 @@ function LoginView() {
     console.log(username, password)
     const res = await request.get<Post>('/getToken')
     localStorage.setItem('token', res?.data?.data?.token)
-    // setToken(res?.data?.data?.token)
+    setToken(res?.data?.data?.token)
     // 登录成功后跳转到首页
     navigate('/')
     console.log(localStorage.getItem('token'))

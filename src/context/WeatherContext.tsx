@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 
 interface Props {
   children: React.ReactNode
 }
-interface weatherDataType {
+interface WeatherDataType {
   daily: []
 
   [key: string]: unknown
@@ -14,14 +14,14 @@ interface WeatherContextType {
     daily: []
     [key: string]: unknown
   }
-  handleWeatherData: (weatherData: weatherDataType) => void
+  handleWeatherData: (weatherData: WeatherDataType) => void
 }
 
 const obj: WeatherContextType = {
   weatherData: {
     daily: []
   },
-  handleWeatherData: (weatherData: weatherDataType) => {
+  handleWeatherData: (weatherData: WeatherDataType) => {
     console.log(weatherData)
   }
 }
@@ -29,13 +29,10 @@ const obj: WeatherContextType = {
 const WeatherContext = React.createContext(obj)
 export const useWeatherContext = () => React.useContext(WeatherContext)
 export const WeatherProvider: React.FC<Props> = ({ children }) => {
-  const [weatherData, setWeatherData] = React.useState<weatherDataType>({ daily: [] })
-  const handleWeatherData = (data: weatherDataType) => {
+  const [weatherData, setWeatherData] = React.useState<WeatherDataType>({ daily: [] })
+  const handleWeatherData = (data: WeatherDataType) => {
     setWeatherData(data)
   }
-  const weatherContext = {
-    weatherData,
-    handleWeatherData
-  }
+  const weatherContext = useMemo(() => ({ weatherData, handleWeatherData }), [weatherData])
   return <WeatherContext.Provider value={weatherContext}>{children}</WeatherContext.Provider>
 }

@@ -1,19 +1,12 @@
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React from 'react'
+import { Navigate } from 'react-router-dom'
 
-function PrivateRoute({ children }: any) {
-  const token = localStorage.getItem('token')
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    // 判断用户是否已经登录，如果没有登录则跳转到登录页面
-    if (!token) {
-      console.log('没有登录')
-      navigate('/login')
-    }
-  }, [navigate, token])
-  console.log('登录了')
-  return <>{token ? children : null}</>
+interface Props {
+  children: React.ReactNode
+}
+const PrivateRoute: React.FC<Props> = ({ children }) => {
+  const storageToken = localStorage.getItem('token')
+  return <>{storageToken ? children : <Navigate to="/login" replace={true} />}</>
 }
 
 export default PrivateRoute

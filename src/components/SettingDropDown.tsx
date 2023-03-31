@@ -1,7 +1,7 @@
 import { Dropdown, DropdownProps } from 'rsuite'
 import Toolbar from './Toolbar'
 import CogIcon from '@rsuite/icons/legacy/Cog'
-import { useNavigate } from 'react-router-dom'
+import { useTokenContext } from '../context/auth/AuthContext'
 
 type themeUnionType = 'dark' | 'light' | 'high-contrast' | undefined
 
@@ -11,12 +11,8 @@ interface Props extends DropdownProps {
 }
 
 const CustomDropdown = ({ theme, toggleTheme, ...props }: Props) => {
-  const navigate = useNavigate()
-  const logOut = () => {
-    localStorage.removeItem('token')
-    // 跳转到登录页面
-    navigate('/login')
-  }
+  const { logOut } = useTokenContext()
+
   return (
     <Dropdown {...props} icon={<CogIcon />}>
       <Dropdown.Item>
