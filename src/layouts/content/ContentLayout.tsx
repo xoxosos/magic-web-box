@@ -1,6 +1,7 @@
 import { Content } from 'rsuite'
+import { ReactNode } from 'react'
 
-function ContentLayout({ children }: never) {
+function ContentLayout({ children }: { children: ReactNode }) {
   return (
     <Content>
       <div className="main-content">

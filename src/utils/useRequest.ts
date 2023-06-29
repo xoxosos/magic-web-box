@@ -64,7 +64,6 @@ class Request {
 }
 const request = new Request({
   // 根据实际情况修改
-  // baseURL: 'https://jsonplaceholder.typicode.com'
   baseURL: 'api'
 })
 export default request
