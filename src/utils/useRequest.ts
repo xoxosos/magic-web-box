@@ -1,11 +1,10 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
-
+// 请求配置对象
 type IRequestConfig = AxiosRequestConfig
-
+// 请求返回结果
 interface IResponse<T = object> extends AxiosResponse {
   data: T
 }
-
 class Request {
   private instance: AxiosInstance
 

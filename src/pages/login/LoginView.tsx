@@ -1,11 +1,10 @@
-import { Button, ButtonToolbar, FlexboxGrid, Form, Panel } from 'rsuite'
-
-import request from '../../utils/useRequest'
+import { Button, ButtonToolbar, FlexboxGrid, Form, Message, Panel, useToaster } from 'rsuite'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTokenContext } from '../../context/auth/AuthContext'
 import styles from './login.module.less'
 import './login.less'
+import useLoginApi from './service'
 
 function LoginView() {
   const [username, setUsername] = useState('')
@@ -13,15 +12,22 @@ function LoginView() {
   const navigate = useNavigate()
   // 使用setToken来更新token 重新渲染
   const { setToken } = useTokenContext()
-
-  interface Post {
-    data: { token: string }
-  }
-
+  const toaster = useToaster()
   const handleSubmit = async () => {
-    console.log(username, password)
-    const res = await request.get<Post>('/getToken')
-    localStorage.setItem('token', res?.data?.data?.token)
+    const res = await useLoginApi.login({ username, password })
+    const { data, code, message } = res?.data || {}
+    if (code !== 0)
+      return toaster.push(
+        <Message showIcon type="error" closable>
+          {message}
+        </Message>
+      )
+    toaster.push(
+      <Message showIcon type="success" closable>
+        {message}
+      </Message>
+    )
+    localStorage.setItem('token', data?.token)
     setToken(res?.data?.data?.token)
     // 登录成功后跳转到首页
     navigate('/home')
