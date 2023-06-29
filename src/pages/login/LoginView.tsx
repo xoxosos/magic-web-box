@@ -36,7 +36,7 @@ function LoginView() {
   return (
     <div className={`${styles.loginForm} login-content`}>
       <FlexboxGrid justify="center" style={{ margin: 'auto', width: '100%' }}>
-        <FlexboxGrid.Item colspan={12}>
+        <FlexboxGrid.Item>
           <Panel className="login-form-card" header={<h3>Login</h3>} bordered>
             <Form fluid>
               <Form.Group>

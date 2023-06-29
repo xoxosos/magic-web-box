@@ -67,17 +67,30 @@
 }
 
 .login-form-card {
-  box-shadow: 12px 12px 23px #a8928b, -12px -12px 23px #f4d3c6;
+  margin: auto;
 
+  box-shadow: 12px 12px 23px #a8928b, -12px -12px 23px #f4d3c6;
+  @media screen and (max-width: 700px) {
+    width: 50%;
+
+  }
+  @media screen and (min-width: 701px) and (max-width: 1024px) {
+    width: 80%;
+
+  }
+  @media screen and (min-width: 1025px) {
+    width: 100%;
+
+  }
   &.rs-panel {
     border: none;
     border-radius: 40px;
-
     &.rs-panel-bordered {
       border: none;
     }
   }
 }
+
 
 .my-login-form-card-mixin() {
   .login-form-card;
