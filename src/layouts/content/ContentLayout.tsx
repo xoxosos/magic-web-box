@@ -1,6 +1,6 @@
 import { Content } from 'rsuite'
 
-function ContentLayout({ children }: any) {
+function ContentLayout({ children }: never) {
   return (
     <Content>
       <div className="main-content">
