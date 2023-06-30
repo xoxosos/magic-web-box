@@ -1,0 +1,28 @@
+.two-col-layout {
+  display: flex;
+}
+.two-col-layout-left {
+  flex: 0 0 auto;
+  width: 200px;
+}
+.two-col-layout-right {
+  flex: 1;
+  overflow: hidden;
+}
+.two-col-layout-right-header {
+  position: absolute;
+  top: 0;
+}
+
+.two-col-layout-right-content {
+  height: 100vh;
+  overflow-y: auto;
+}
+.two-col-layout-right-footer {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  div {
+    margin: auto;
+  }
+}
