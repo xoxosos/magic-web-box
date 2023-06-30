@@ -11,6 +11,7 @@ import ContentLayout from '../layouts/content/ContentLayout'
 import { SideLayout } from '../layouts/sidenav/SideLayout'
 import { CustomHeaderNavbar } from '../layouts/header/CustomHeaderNavbar'
 import { SettingHover } from '../components/SettingHover'
+import { MainView } from './main/MainView'
 
 type themeUnionType = 'dark' | 'light' | 'high-contrast' | undefined
 
@@ -35,15 +36,16 @@ export const HomeView = () => {
 
               <ContentLayout>
                 <Routes>
+                  <Route path="/" element={<MainView />} />
+                  <Route path="product" element={<ProductView />} />
                   <Route
-                    path="/"
+                    path="weather"
                     element={
                       <WeatherProvider>
                         <WeatherView />
                       </WeatherProvider>
                     }
                   />
-                  <Route path="product" element={<ProductView />} />
                 </Routes>
               </ContentLayout>
             </Container>
