@@ -1,6 +1,9 @@
 import React from 'react'
 
 export const useLocalStorage = <T>(key: string, initialValue: T): [T, (value: T) => void] => {
+  if (typeof key !== 'string') {
+    throw new Error('The "key" parameter must be a string.')
+  }
   const [storedValue, setStoredValue] = React.useState<T>(() => {
     try {
       const item = window.localStorage.getItem(key)
@@ -17,7 +20,7 @@ export const useLocalStorage = <T>(key: string, initialValue: T): [T, (value: T)
       setStoredValue(valueToStore)
       window.localStorage.setItem(key, JSON.stringify(valueToStore))
     } catch (error) {
-      console.log(error)
+      console.error(error)
     }
   }
 
