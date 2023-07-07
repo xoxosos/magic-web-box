@@ -14,7 +14,8 @@ const Notice = () => (
 const ImageWrapper = () => {
     return (
         <div className={styles.imageWrapper}>
-            <div style={{ border: '1px solid yellow', margin: 'auto' }}> <SearchBox />
+            <div style={{ border: '1px solid yellow', margin: 'auto' }}> 
+                <SearchBox />
                 <Notice />
             </div>
         </div>
