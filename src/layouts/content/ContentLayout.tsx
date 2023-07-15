@@ -1,13 +1,10 @@
-import { Content } from 'rsuite'
-import React from 'react'
+import GlobalProps from 'globalProps'
 
-function ContentLayout({ children }: { children: React.ReactNode }) {
+function ContentLayout({ children, className }: GlobalProps) {
   return (
-    <Content>
-      <div className="main-content">
-        <div className="main-content-search">{children}</div>
-      </div>
-    </Content>
+    <section className={className}>
+      <div>{children}</div>
+    </section>
   )
 }
 

@@ -1,10 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-//当 exact 被设置为 true 时，只有当路由路径与当前路径完全匹配时，才会激活该路由。
+import { Link, LinkProps } from 'react-router-dom'
 
-const NavLink = React.forwardRef(({ href, children, ...rest }: any, ref) => (
-  <Link ref={ref} exact="true" to={href} {...rest}>
-    {children}
+const NavLink = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => (
+  <Link ref={ref} {...props}>
+    {props.children}
   </Link>
 ))
 NavLink.displayName = 'NavLink'

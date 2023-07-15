@@ -46,14 +46,14 @@ main {
 
 }
 
-.rs-navbar-inverse .rs-navbar-item.rs-navbar-item-active, .rs-navbar-inverse .rs-dropdown .rs-dropdown-menu-active ~ .rs-dropdown-toggle {
-  background-color: indianred !important;
-  border-bottom: 2px solid black;
-}
-
-.rs-navbar-item:hover {
-  background-color: #d39494 !important;
-}
+//.rs-navbar-inverse .rs-navbar-item.rs-navbar-item-active, .rs-navbar-inverse .rs-dropdown .rs-dropdown-menu-active ~ .rs-dropdown-toggle {
+//  background-color: indianred !important;
+//  border-bottom: 2px solid black;
+//}
+//
+//.rs-navbar-item:hover {
+//  background-color: #d39494 !important;
+//}
 
 /* 滚动条凹槽的颜色，还可以设置边框属性 */
 *::-webkit-scrollbar-track-piece {
@@ -98,15 +98,18 @@ main {
 }
 
 .card-item {
-    margin: 10px 0 10px 0;
+    margin: 10px 5px 10px 5px;
     transition: all 0.3s ease;
     /* 添加过渡效果 */
 }
-
+.two-col-layout-right-content {
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+}
 .card-item:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 15px -14px rgba(0, 36, 100, .3);
-
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 5px 10px  rgba(0, 36, 100, .3);
     h4 {
         color: red
     }

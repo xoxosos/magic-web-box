@@ -42,19 +42,11 @@ class Request {
     return await this.instance.get<T>(url, config)
   }
 
-  public async post<T = object>(
-    url: string,
-    data?: T,
-    config?: IRequestConfig
-  ): Promise<IResponse<T>> {
-    return await this.instance.post<T>(url, data, config)
+  public async post<T = object, R = object>(url: string, data: T, config?: IRequestConfig): Promise<IResponse<R>> {
+    return await this.instance.post<R>(url, data, config)
   }
 
-  public async put<T = object>(
-    url: string,
-    data?: T,
-    config?: IRequestConfig
-  ): Promise<IResponse<T>> {
+  public async put<T = object>(url: string, data?: T, config?: IRequestConfig): Promise<IResponse<T>> {
     return await this.instance.put<T>(url, data, config)
   }
 

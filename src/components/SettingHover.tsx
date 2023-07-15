@@ -3,31 +3,33 @@ import ArrowUpLineIcon from '@rsuite/icons/ArrowUpLine'
 import { Icon } from '@rsuite/icons'
 
 import { BiSolidMoon, BiSun } from 'react-icons/bi'
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect } from 'react'
 
 type themeUnionType = 'dark' | 'light' | 'high-contrast' | undefined
 
 interface Props {
+  isTop: boolean
+  setTop: (isTop: boolean) => void
   theme: themeUnionType
   toggleTheme: () => void
 }
 
-export function SettingHover({ theme, toggleTheme }: Props) {
-  const [isTop, toggleTop] = useState(false)
+export function SettingHover({ isTop, setTop, theme, toggleTheme }: Props) {
+  // const [isTop, setTop] = useState(false)
   // 避免在每次渲染时重新创建回调函数
   const handleScroll = useCallback(() => {
-    const element = document.querySelector('main')
+    const element = document.querySelector('.two-col-layout-right-content')
     if (element) {
       if (element.scrollTop > 100) {
-        toggleTop(true)
+        setTop(true)
       } else {
-        toggleTop(false)
+        setTop(false)
       }
     }
   }, [])
 
   const handleClick = () => {
-    const element = document.querySelector('main')
+    const element = document.querySelector('.two-col-layout-right-content')
     element?.scrollTo({
       top: 0,
       behavior: 'smooth' //平滑滚动到顶部
@@ -35,7 +37,7 @@ export function SettingHover({ theme, toggleTheme }: Props) {
   }
 
   useEffect(() => {
-    const element = document.querySelector('main')
+    const element = document.querySelector('.two-col-layout-right-content')
     element?.addEventListener('scroll', handleScroll)
 
     return () => {
@@ -46,14 +48,15 @@ export function SettingHover({ theme, toggleTheme }: Props) {
   return (
     <div
       style={{
-        position: 'sticky',
+        position: 'absolute',
         bottom: 0,
+        right: 0,
         flexDirection: 'column',
         alignContent: 'flex-end',
         width: 'fit-content',
-        left: '100%',
         display: 'flex',
-        padding: '22px'
+        padding: '22px',
+        zIndex: '999'
       }}
     >
       <IconButton
