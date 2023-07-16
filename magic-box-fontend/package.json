@@ -9,7 +9,7 @@
     ]
   },
   "scripts": {
-    "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix --quiet ./",
+    "lint": "eslint --ext .js,.jsx,.ts,.tsx --fix --quiet ..",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
