@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@rsuite/icons':
+    specifier: ^1.0.2
+    version: registry.npmmirror.com/@rsuite/icons@1.0.2(react-dom@18.2.0)(react@18.2.0)
   '@types/react-router-dom':
     specifier: ^5.3.3
     version: registry.npmmirror.com/@types/react-router-dom@5.3.3
