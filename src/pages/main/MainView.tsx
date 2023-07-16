@@ -1,6 +1,8 @@
 import ImageWrapper from '../../components/content-header/ImageWrapper'
 import Tabs from '../../components/tabs/tabs'
 import { CardItem } from '../../components/CardItem'
+import { useGlobalContext } from '../../context/global/GlobalContext'
+import { Fragment } from 'react'
 
 const data = [
   {
@@ -17,9 +19,24 @@ const data = [
   }
 ]
 export function MainView() {
+  const { menu } = useGlobalContext()
+  console.log(menu)
+  if (!menu) {
+    return <div>loading...</div>
+  }
   return (
     <>
       <ImageWrapper />
+      {menu?.map((item) => {
+        return (
+          <Fragment key={item.id}>
+            <h4 style={{ padding: '15px 25px 0 25px', borderBottom: '1px solid gainsboro' }}>{item.name}</h4>
+            <Tabs data={item.children}>
+              <CardItem />
+            </Tabs>
+          </Fragment>
+        )
+      })}
       <Tabs data={data}>
         <CardItem />
       </Tabs>

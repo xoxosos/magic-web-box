@@ -19,6 +19,7 @@ const headerStyles = {
 } as { [key: string]: React.CSSProperties }
 
 export const SideLayout = ({ expand, menu, initKey }: { expand: boolean; menu: any; initKey: string }) => {
+  console.log(menu)
   // 选中的菜单
   const [activeKey, setActiveKey] = useState(initKey)
   const handleSelect = (eventKey: string) => {
@@ -72,7 +73,4 @@ export const SideLayout = ({ expand, menu, initKey }: { expand: boolean; menu: a
       </Sidenav>
     </Sidebar>
   )
-}
-function uesEffect(arg0: () => void) {
-  throw new Error('Function not implemented.')
 }
