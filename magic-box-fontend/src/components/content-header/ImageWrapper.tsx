@@ -13,7 +13,7 @@ const Notice = () => <p>test</p>
 const ImageWrapper = () => {
   return (
     <div className={styles.imageWrapper}>
-      <div style={{ border: '1px solid yellow', margin: 'auto' }}>
+      <div style={{ margin: 'auto' }}>
         <SearchBox />
         <Notice />
       </div>

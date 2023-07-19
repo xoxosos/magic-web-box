@@ -4,18 +4,23 @@ import { CSSProperties, Fragment, useEffect, useState } from 'react'
 import { flushSync } from 'react-dom'
 import { Nav, Sidebar, Sidenav } from 'rsuite'
 import { useGlobalContext } from '../../context/global/GlobalContext'
+
 interface Props {
   id: number
   name: string
   children: Props[]
 }
+
 const headerStyles = {
-  padding: 18,
+  padding: '18px 18px 18px 9px',
   fontSize: 16,
   height: 56,
   color: '#fff',
   whiteSpace: 'nowrap',
-  overflow: 'hidden'
+  overflow: 'hidden',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between'
 } as { [key: string]: CSSProperties }
 
 export const SideLayout = ({ expand, menu, initKey }: { expand: boolean; menu: any; initKey: string }) => {
@@ -48,15 +53,16 @@ export const SideLayout = ({ expand, menu, initKey }: { expand: boolean; menu: a
     <Sidebar
       style={{
         display: 'flex',
-        flexDirection: 'column',
-        border: '1px solid red'
+        flexDirection: 'column'
       }}
-      width={expand ? 250 : 56}
+      width={expand ? 210 : 56}
       collapsible
     >
       <Sidenav.Header>
         <div style={headerStyles}>
-          <span style={{ marginTop: 'auto', color: '#f33' }}> BRAND</span>
+          <img src="../../src/assets/images/mario.png" width="40px" height="40px" />
+
+          <span style={{ marginTop: 'auto', color: '#f33', display: expand ? 'inline' : 'none' }}>Magic Box</span>
         </div>
       </Sidenav.Header>
       <Sidenav expanded={expand} defaultOpenKeys={['1']}>

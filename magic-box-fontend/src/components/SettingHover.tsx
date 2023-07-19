@@ -64,7 +64,7 @@ export function SettingHover({ isTop, setTop, theme, toggleTheme }: Props) {
         onClick={handleClick}
         icon={<ArrowUpLineIcon />}
         color="blue"
-        style={{ display: isTop ? undefined : 'none' }}
+        style={{ display: isTop ? undefined : 'none', marginBottom: '5px' }}
         appearance="primary"
         circle
       />

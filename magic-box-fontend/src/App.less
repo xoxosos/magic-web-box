@@ -4,9 +4,11 @@
   padding: 0;
   box-sizing: border-box;
 }
-body{
+
+body {
   overflow: hidden;
 }
+
 .App {
   background-color: var(--rs-body);
   display: flex;
@@ -84,107 +86,121 @@ main {
 }
 
 .content-header-navbar {
-    &.rs-nav {
-        width: fit-content;
-        margin: auto;
-    }
+  &.rs-nav {
+    width: fit-content;
+    margin: auto;
+  }
 
-    &.rs-nav-subtle.rs-nav-horizontal .rs-nav-bar {
-        border: none;
-    }
-    &.rs-nav-item.rs-nav-item-active{
-     color:white
-    }
+  &.rs-nav-subtle.rs-nav-horizontal .rs-nav-bar {
+    border: none;
+  }
+
+  &.rs-nav-item.rs-nav-item-active {
+    color: white
+  }
+}
+
+.content-header-btn {
+  padding: 5px;
+  justify-content: center
 }
 
 .card-item {
-    margin: 10px 5px 10px 5px;
-    transition: all 0.3s ease;
-    /* 添加过渡效果 */
+  margin: 10px 5px 10px 5px;
+  transition: all 0.3s ease;
+  /* 添加过渡效果 */
 }
+
 .two-col-layout-right-content {
   height: 100vh;
   width: 100%;
   overflow-y: auto;
 }
+
 .card-item:hover {
   transform: scale(1.05) translateY(-5px);
-  box-shadow: 0 5px 10px  rgba(0, 36, 100, .3);
-    h4 {
-        color: red
-    }
+  box-shadow: 0 5px 10px rgba(0, 36, 100, .3);
+
+  h4 {
+    color: red
+  }
 
 }
 
 .card-item-header {
-    cursor: pointer;
-    border-bottom: 1px solid red;
-    display: flex;
-    align-items: center;
+  cursor: pointer;
+  border-bottom: 1px solid red;
+  display: flex;
+  align-items: center;
 
 }
 
 .card-item-header-text {
-    text-overflow: ellipsis;
-    white-space: normal;
-    overflow: hidden;
-    width: 9rem;
-    color: #575757;
+  text-overflow: ellipsis;
+  white-space: normal;
+  overflow: hidden;
+  width: 9rem;
+  color: #575757;
 }
 
 .card-item-tags {
-    padding: 5px 0 5px 0;
-    display: flex;
-    overflow: auto;
+  padding: 5px 0 5px 0;
+  display: flex;
+  overflow: auto;
 
-    .rs-tag {
-        cursor: pointer;
-    }
+  .rs-tag {
+    cursor: pointer;
+  }
 
-    &::-webkit-scrollbar {
-        width: 1px;
-        height: 5px;
-        background: white;
-        scroll-behavior: smooth;
-    }
+  &::-webkit-scrollbar {
+    width: 1px;
+    height: 5px;
+    background: white;
+    scroll-behavior: smooth;
+  }
 
-    &::-webkit-scrollbar-corner,
+  &::-webkit-scrollbar-corner,
     /* 滚动条角落 */
-    &::-webkit-scrollbar-thumb,
-    &::-webkit-scrollbar-track {
-        border-radius: 5px;
-    }
+  &::-webkit-scrollbar-thumb,
+  &::-webkit-scrollbar-track {
+    border-radius: 5px;
+  }
 
-    &::-webkit-scrollbar-corner,
-    &::-webkit-scrollbar-track {
-        /* 滚动条轨道 */
-        background-color: rgba(180, 160, 120, 0.1);
-        box-shadow: inset 0 0 1px rgba(180, 160, 120, 0.5);
-    }
+  &::-webkit-scrollbar-corner,
+  &::-webkit-scrollbar-track {
+    /* 滚动条轨道 */
+    background-color: rgba(180, 160, 120, 0.1);
+    box-shadow: inset 0 0 1px rgba(180, 160, 120, 0.5);
+  }
 
-    &::-webkit-scrollbar-thumb {
-        /* 滚动条手柄 */
-        background-color: #00adb5;
-    }
+  &::-webkit-scrollbar-thumb {
+    /* 滚动条手柄 */
+    background-color: #00adb5;
+  }
 }
-.search-input{
-    &.rs-input-group-focus{
-        border: none;
-        outline: none;
-    }
-    &.rs-input:focus{
-          border: none;
-        outline: none;
-    }
+
+.search-input {
+  &.rs-input-group-focus {
+    border: none;
+    outline: none;
+  }
+
+  &.rs-input:focus {
+    border: none;
+    outline: none;
+  }
 }
-.search-input-btn{
-    &.rs-input-group-btn:focus{
-        background-color: transparent !important;
-    }
-    &.rs-input-group-btn:hover{
-        background-color: transparent !important;
-    }
-    &.rs-input-group-btn:active{
-        background-color: transparent !important;
-    }
+
+.search-input-btn {
+  &.rs-input-group-btn:focus {
+    background-color: transparent !important;
+  }
+
+  &.rs-input-group-btn:hover {
+    background-color: transparent !important;
+  }
+
+  &.rs-input-group-btn:active {
+    background-color: transparent !important;
+  }
 }

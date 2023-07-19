@@ -41,7 +41,7 @@ const Card = () => (
       </Tag>
     </div>
   </Panel>
-)
+);
 
 export const CardItem = () => (
   <div className="show-grid">
@@ -66,4 +66,4 @@ export const CardItem = () => (
       </FlexboxGrid.Item>
     </FlexboxGrid>
   </div>
-)
+);

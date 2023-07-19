@@ -8,9 +8,10 @@
  */
 import HomeIcon from '@rsuite/icons/legacy/Home'
 import SearchIcon from '@rsuite/icons/legacy/Search'
-
-import { useState } from 'react'
-import { Input, InputGroup, Nav } from 'rsuite'
+import { Button, ButtonToolbar, Input, InputGroup, Nav } from 'rsuite'
+import GooglePlusCircleIcon from '@rsuite/icons/legacy/GooglePlusCircle'
+import TwitterIcon from '@rsuite/icons/legacy/Twitter'
+import { KeyboardEvent, useState } from 'react'
 
 const styles = {
   width: '90%',
@@ -20,11 +21,20 @@ const styles = {
   backdropFilter: 'blur(5px)',
   backgroundColor: 'rgba(0, 0, 0, .6)'
 }
-const placeholder: Map<string, string> = new Map([
-  ['home', 'home'],
-  ['news', 'news'],
-  ['solutions', 'solutions']
-])
+
+interface SearchProps {
+  baidu: string
+  google: string
+  bing: string
+}
+
+type SearchEngine = 'baidu' | 'google' | 'bing'
+
+// 修改 type 变量的类型为 SearchEngine
+const placeholder: Map<string, string | SearchProps> = new Map()
+placeholder.set('search', { baidu: '百度一下，你就知道', google: 'Google', bing: '必应搜索' })
+placeholder.set('news', 'news')
+placeholder.set('solutions', 'solutions')
 const Navbar = ({ active, onSelect, ...props }: any) => {
   return (
     <Nav
@@ -34,7 +44,7 @@ const Navbar = ({ active, onSelect, ...props }: any) => {
       onSelect={onSelect}
       style={{ marginBottom: 10, border: 'none' }}
     >
-      <Nav.Item eventKey="home" icon={<HomeIcon />}>
+      <Nav.Item eventKey="search" icon={<HomeIcon />}>
         搜索
       </Nav.Item>
       <Nav.Item eventKey="news">社区</Nav.Item>
@@ -45,18 +55,68 @@ const Navbar = ({ active, onSelect, ...props }: any) => {
   )
 }
 const SearchBox = () => {
-  const [active, setActive] = useState('home')
-  const searchBaiDu = () => { }
+  const [active, setActive] = useState('search')
+  const [val, setVal] = useState('')
+  const [type, setType] = useState<SearchEngine>('baidu')
+
+  const search = (e?: KeyboardEvent<HTMLInputElement>) => {
+    const searchEngineUrls: { [key: string]: string } = {
+      baidu: 'https://www.baidu.com/s?wd=',
+      google: 'https://www.google.com/search?q=',
+      bing: 'https://cn.bing.com/search?q='
+    }
+    const open = (url: string) => {
+      // encodeURIComponent用于将字符串中的特殊字符进行编码，使其成为安全的 URL 组件。
+      window.open(url + encodeURIComponent(val), '_blank')
+    }
+    if (e) {
+      e.key === 'Enter' && open(searchEngineUrls[type] || searchEngineUrls.baidu)
+      return
+    }
+    open(searchEngineUrls[type] || searchEngineUrls.baidu)
+  }
+  const placeholderText =
+    active === 'search' ? (placeholder.get(active) as SearchProps)[type] : (placeholder.get(active) as string)
   return (
     <div>
       <h1>程序猿梦工厂-收录程序猿常用的资料</h1>
       <Navbar appearance="subtle" active={active} onSelect={setActive} />
       <InputGroup inside style={styles}>
-        <Input className="search-input " style={styles} placeholder={placeholder.get(active)} />
-        <InputGroup.Button onClick={active==='home' ? } className="search-input-btn">
+        <Input
+          onKeyPress={(e) => search(e)}
+          className="search-input "
+          value={val}
+          onChange={setVal}
+          style={styles}
+          placeholder={placeholderText}
+        />
+        <InputGroup.Button onClick={() => (active === 'search' ? search() : undefined)} className="search-input-btn">
           <SearchIcon />
         </InputGroup.Button>
       </InputGroup>
+      {active === 'search' && (
+        <ButtonToolbar className="content-header-btn">
+          <Button
+            onClick={() => setType('baidu')}
+            color="blue"
+            appearance="primary"
+            startIcon={<GooglePlusCircleIcon />}
+          >
+            Baidu
+          </Button>
+          <Button
+            onClick={() => setType('google')}
+            color="red"
+            appearance="primary"
+            startIcon={<GooglePlusCircleIcon />}
+          >
+            Google
+          </Button>
+          <Button onClick={() => setType('bing')} color="cyan" appearance="primary" startIcon={<TwitterIcon />}>
+            Bing
+          </Button>
+        </ButtonToolbar>
+      )}
     </div>
   )
 }
