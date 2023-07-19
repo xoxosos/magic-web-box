@@ -2,18 +2,18 @@ import { CustomProvider, Footer } from 'rsuite'
 import zhCN from 'rsuite/esm/locales/zh_CN'
 
 import { useState } from 'react'
-import { useTokenContext } from '../context/auth/AuthContext'
 import { Route, Routes } from 'react-router-dom'
-import { ProductView } from './products/ProductView'
-import { WeatherProvider } from '../context/WeatherContext'
-import { WeatherView } from './weather/WeatherView'
-import ContentLayout from '../layouts/content/ContentLayout'
-import { SideLayout } from '../layouts/sidenav/SideLayout'
-import { HeaderLayout } from '../layouts/header/HeaderLayout'
 import { SettingHover } from '../components/SettingHover'
-import { MainView } from './main/MainView'
-import styles from '../layouts/styles/layout.module.less'
+import { WeatherProvider } from '../context/WeatherContext'
+import { useTokenContext } from '../context/auth/AuthContext'
 import { useGlobalContext } from '../context/global/GlobalContext'
+import ContentLayout from '../layouts/content/ContentLayout'
+import { HeaderLayout } from '../layouts/header/HeaderLayout'
+import { SideLayout } from '../layouts/sidenav/SideLayout'
+import styles from '../layouts/styles/layout.module.less'
+import { MainView } from './main/MainView'
+import { ProductView } from './products/ProductView'
+import { WeatherView } from './weather/WeatherView'
 
 type themeUnionType = 'dark' | 'light' | 'high-contrast' | undefined
 
@@ -21,7 +21,7 @@ export const HomeView = () => {
   const [theme, setTheme] = useState<themeUnionType>('light')
   const { token } = useTokenContext()
   const { expand, handleExpand, isTop, toggleTop, menu, key } = useGlobalContext()
-  console.log(token)
+  console.log(token, menu)
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark')
   }

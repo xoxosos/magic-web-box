@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react'
+import { createContext, useContext } from 'react'
 
 type params = string | number | boolean | undefined
 interface Props {
@@ -8,6 +8,9 @@ interface Props {
   toggleTop: (value: boolean) => void
   menu?: any[]
   loading?: boolean
+  index?: number
+  handleIndex: (value: number) => void
+  selectedRef: any
   handleLoading?: (value: params) => void
   key?: string
 }
@@ -23,6 +26,11 @@ const globalContext: Props = {
   },
   menu: [],
   loading: false,
+  index: 0,
+  handleIndex: () => {
+    //
+  },
+  selectedRef: null,
   handleLoading: () => {
     //
   },

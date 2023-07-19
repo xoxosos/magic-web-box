@@ -1,4 +1,12 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
+/*
+ * @Author: LinRenJie linrenjie@houseitech.com
+ * @Date: 2023-07-18 17:51:00
+ * @LastEditors: LinRenJie linrenjie@houseitech.com
+ * @LastEditTime: 2023-07-19 13:12:04
+ * @FilePath: \magic-box-fontend\src\utils\useRequest.ts
+ * @Description:
+ */
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 // 请求配置对象
 type IRequestConfig = AxiosRequestConfig
 // 请求返回结果
@@ -12,13 +20,13 @@ class Request {
     this.instance = axios.create(config)
 
     this.instance.interceptors.request.use(
-      (config) => {
+      (config: InternalAxiosRequestConfig) => {
         // 在发送请求之前做些什么
         config.headers.apifoxToken = 'dROD5webTSINtKEixUxWWBYNnjoRsSXn'
         console.log('请求前拦截器：', config)
         return config
       },
-      (error) => {
+      (error: unknown) => {
         // 对请求错误做些什么
         console.error('请求前拦截器错误：', error)
         return Promise.reject(error)
@@ -26,12 +34,12 @@ class Request {
     )
 
     this.instance.interceptors.response.use(
-      (response) => {
+      (response: AxiosResponse) => {
         // 对响应数据做点什么
         console.log('响应后拦截器：', response)
         return response
       },
-      (error) => {
+      (error: unknown) => {
         // 对响应错误做点什么
         console.error('响应后拦截器错误：', error)
         return Promise.reject(error)

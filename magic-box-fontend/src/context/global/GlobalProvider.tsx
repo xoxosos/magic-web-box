@@ -1,8 +1,8 @@
-import { FC, ReactNode, useEffect, useMemo, useState } from 'react'
-import { GlobalContext } from './GlobalContext'
-import useLoginApi from '../../pages/login/service'
 import NProgress from 'nprogress' // 引入nprogress插件
 import 'nprogress/nprogress.css' // 这个nprogress样式必须引入
+import { FC, ReactNode, useEffect, useMemo, useRef, useState } from 'react'
+import useLoginApi from '../../pages/login/service'
+import { GlobalContext } from './GlobalContext'
 
 interface Props {
   id: number
@@ -17,10 +17,12 @@ export const GlobalProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [menu, setMenu] = useState([])
   const [key, setKey] = useState('')
   const [loading, setLoading] = useState(true)
+  const selectedRef = useRef(null)
+  const [index, setIndex] = useState(100)
   const handleLoading = () => loading
+
   useEffect(() => {
     NProgress.start()
-
     // 初始化Menu
     const fetchMenuData = async () => {
       try {
@@ -42,11 +44,23 @@ export const GlobalProvider: FC<{ children: ReactNode }> = ({ children }) => {
     fetchMenuData()
   }, [])
   const handleExpand = () => setExpand(!expand)
-
+  const handleIndex = (i: number) => setIndex(i)
   const toggleTop = (flag: boolean) => setTop(flag)
 
   const globalContextValue = useMemo(
-    () => ({ handleExpand, toggleTop, isTop, expand, menu, key, loading, handleLoading }),
+    () => ({
+      handleExpand,
+      toggleTop,
+      isTop,
+      expand,
+      menu,
+      key,
+      loading,
+      handleLoading,
+      handleIndex,
+      index,
+      selectedRef
+    }),
     [toggleTop, isTop, expand, menu]
   )
   return <GlobalContext.Provider value={globalContextValue}>{children}</GlobalContext.Provider>

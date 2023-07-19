@@ -1,9 +1,8 @@
+import { CardItem } from '../../components/CardItem'
 import ImageWrapper from '../../components/content-header/ImageWrapper'
 import Tabs from '../../components/tabs/tabs'
-import { CardItem } from '../../components/CardItem'
+import { SelectParent } from '../../components/test/SelectParent'
 import { useGlobalContext } from '../../context/global/GlobalContext'
-import { Fragment } from 'react'
-
 const data = [
   {
     name: 'Tab001',
@@ -20,6 +19,8 @@ const data = [
 ]
 export function MainView() {
   const { menu } = useGlobalContext()
+  const { index, selectedRef } = useGlobalContext()
+
   console.log(menu)
   if (!menu) {
     return <div>loading...</div>
@@ -27,19 +28,20 @@ export function MainView() {
   return (
     <>
       <ImageWrapper />
-      {menu?.map((item) => {
+      {menu?.map((item, i) => {
         return (
-          <Fragment key={item.id}>
+          <div ref={index === i ? selectedRef : null} key={item.id}>
             <h4 style={{ padding: '15px 25px 0 25px', borderBottom: '1px solid gainsboro' }}>{item.name}</h4>
             <Tabs data={item.children}>
               <CardItem />
             </Tabs>
-          </Fragment>
+          </div>
         )
       })}
       <Tabs data={data}>
         <CardItem />
       </Tabs>
+      <SelectParent />
       <h1>main</h1>
       <h1>main</h1> <h1>main</h1> <h1>main</h1> <h1>main</h1>
       <h1>main</h1>
