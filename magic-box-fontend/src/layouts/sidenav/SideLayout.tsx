@@ -4,6 +4,7 @@ import { CSSProperties, Fragment, useEffect, useState } from 'react'
 import { flushSync } from 'react-dom'
 import { Nav, Sidebar, Sidenav } from 'rsuite'
 import { useGlobalContext } from '../../context/global/GlobalContext'
+import logo from '@/assets/images/mario.png'
 
 interface Props {
   id: number
@@ -23,7 +24,17 @@ const headerStyles = {
   justifyContent: 'space-between'
 } as { [key: string]: CSSProperties }
 
-export const SideLayout = ({ expand, menu, initKey }: { expand: boolean; menu: any; initKey: string }) => {
+export const SideLayout = ({
+  expand,
+  menu,
+  initKey,
+  className
+}: {
+  expand: boolean
+  menu: any
+  initKey: string
+  className?: string
+}) => {
   console.log(menu)
   const { index, handleIndex, selectedRef } = useGlobalContext()
   // 选中的菜单
@@ -50,17 +61,10 @@ export const SideLayout = ({ expand, menu, initKey }: { expand: boolean; menu: a
     }
   }, [index])
   return (
-    <Sidebar
-      style={{
-        display: 'flex',
-        flexDirection: 'column'
-      }}
-      width={expand ? 210 : 56}
-      collapsible
-    >
+    <Sidebar className={className} width={expand ? 210 : 56} collapsible>
       <Sidenav.Header>
         <div style={headerStyles}>
-          <img src="../../src/assets/images/mario.png" width="40px" height="40px" />
+          <img src={logo} width="40px" height="40px" />
 
           <span style={{ marginTop: 'auto', color: '#f33', display: expand ? 'inline' : 'none' }}>Magic Box</span>
         </div>

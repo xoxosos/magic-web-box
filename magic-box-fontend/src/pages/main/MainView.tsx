@@ -3,6 +3,7 @@ import ImageWrapper from '../../components/content-header/ImageWrapper'
 import Tabs from '../../components/tabs/tabs'
 import { SelectParent } from '../../components/test/SelectParent'
 import { useGlobalContext } from '../../context/global/GlobalContext'
+
 const data = [
   {
     name: 'Tab001',
@@ -17,6 +18,7 @@ const data = [
     text: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem minus similique architecto sequi delectus non, nobis consequuntur officia, laboriosam reiciendis ea! Natus iste quas perspiciatis magnam repellat, voluptate excepturi esse.'
   }
 ]
+
 export function MainView() {
   const { menu } = useGlobalContext()
   const { index, selectedRef } = useGlobalContext()

@@ -1,11 +1,14 @@
 import { createContext, useContext } from 'react'
 
 type params = string | number | boolean | undefined
+
 interface Props {
   expand: boolean
-  handleExpand: (value: params) => void
+  handleExpand: (value?: params) => void
   isTop: boolean
   toggleTop: (value: boolean) => void
+  open: boolean
+  setOpen: (value: boolean) => void
   menu?: any[]
   loading?: boolean
   index?: number
@@ -14,6 +17,7 @@ interface Props {
   handleLoading?: (value: params) => void
   key?: string
 }
+
 // 上下文对象初始值
 const globalContext: Props = {
   expand: false,
@@ -22,6 +26,10 @@ const globalContext: Props = {
   },
   isTop: false,
   toggleTop: () => {
+    //
+  },
+  open: false,
+  setOpen: () => {
     //
   },
   menu: [],

@@ -1,5 +1,4 @@
 import './App.less'
-
 import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom'
 import { AuthProvider } from './context/auth/AuthProvider'
 import LoginView from './pages/login/LoginView'

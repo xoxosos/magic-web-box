@@ -1,7 +1,7 @@
-import { CustomProvider, Footer } from 'rsuite'
+import { CustomProvider, Drawer, Footer } from 'rsuite'
 import zhCN from 'rsuite/esm/locales/zh_CN'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { SettingHover } from '../components/SettingHover'
 import { WeatherProvider } from '../context/WeatherContext'
@@ -18,20 +18,55 @@ import { WeatherView } from './weather/WeatherView'
 type themeUnionType = 'dark' | 'light' | 'high-contrast' | undefined
 
 export const HomeView = () => {
-  const [theme, setTheme] = useState<themeUnionType>('light')
+  const content = document.getElementsByTagName('body')[0]
+  // js 监听系统主题模式
+  const scheme = window.matchMedia('(prefers-color-scheme: dark)')
+  const isDarkMode = scheme.matches
+  // isDarkMode ? (content.dataset.theme = 'dark') : (content.dataset.theme = 'light')
+  const [theme, setTheme] = useState<themeUnionType>(isDarkMode ? 'dark' : 'light')
   const { token } = useTokenContext()
-  const { expand, handleExpand, isTop, toggleTop, menu, key } = useGlobalContext()
-  console.log(token, menu)
+  const { expand, handleExpand, isTop, toggleTop, menu, key, open, setOpen } = useGlobalContext()
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark')
+    content.dataset.theme = theme === 'dark' ? 'light' : 'dark'
+    // content.setAttribute('class', theme === 'dark' ? 'light-scheme' : 'dark-scheme')
+  }
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth)
+    console.log(window.innerWidth)
   }
 
+  useEffect(() => {
+    // 添加事件监听器，当视窗宽度变化时调用 handleResize 函数
+    window.addEventListener('resize', handleResize)
+
+    // 组件卸载时移除事件监听器，避免内存泄漏
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    }
+  }, [])
   return (
     <CustomProvider locale={zhCN} theme={theme}>
       <div className="show-fake-browser sidebar-page">
         <section className={styles.twoColLayout}>
           <section className={styles.twoColLayoutLeft}>
-            <SideLayout initKey={key as string} menu={menu} expand={expand} />
+            {windowWidth < 768 ? (
+              <Drawer
+                size="xs"
+                placement="left"
+                open={open}
+                onClose={() => setOpen(!open)}
+                className={styles.showDrawer}
+              >
+                <Drawer.Body style={{ padding: 0 }}>
+                  <SideLayout initKey={key as string} menu={menu} expand={open} />
+                </Drawer.Body>
+              </Drawer>
+            ) : (
+              <SideLayout className={styles.customSidebar} initKey={key as string} menu={menu} expand={expand} />
+            )}
           </section>
           <section className={styles.twoColLayoutRight}>
             <HeaderLayout

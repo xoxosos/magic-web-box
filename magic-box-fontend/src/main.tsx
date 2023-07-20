@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { App } from './App'
 import 'rsuite/styles/index.less'
 import './index.css'
+
 import dayjs from 'dayjs'
 import 'dayjs/locale/zh-cn' // 引入中文语言包
 

@@ -3,18 +3,20 @@ import HomeIcon from '@rsuite/icons/legacy/Home'
 import CogIcon from '@rsuite/icons/legacy/Cog'
 import AngleLeftIcon from '@rsuite/icons/legacy/AngleLeft'
 import AngleRightIcon from '@rsuite/icons/legacy/AngleRight'
-import React, { MouseEventHandler } from 'react'
+import React from 'react'
 import { Link, LinkProps, useLocation } from 'react-router-dom'
 import GlobalProps from 'globalProps'
+import { AutoFix } from '../../components/AutoFix'
+import styles from '../styles/layout.module.less'
+import { CustomIconButton } from '../../components/buttons/CustomIconButton'
+import { useGlobalContext } from '../../context/global/GlobalContext'
 
 interface HeaderProps extends GlobalProps {
   isTop: boolean
   expand: boolean
   setExpand: (expand: boolean) => void
 }
-const NavToggle = ({ expand, onChange }: { expand: boolean; onChange: MouseEventHandler<HTMLElement> }) => {
-  return <IconButton circle onClick={onChange} size="sm" icon={expand ? <AngleLeftIcon /> : <AngleRightIcon />} />
-}
+
 const NavLink = React.forwardRef<HTMLAnchorElement, LinkProps>((props, ref) => (
   <Link ref={ref} {...props}>
     {props.children}
@@ -24,10 +26,25 @@ export const HeaderLayout = ({ isTop, expand, setExpand, className }: HeaderProp
   const { pathname } = useLocation()
   const [activeKey, setActiveKey] = React.useState(pathname || '/home')
   NavLink.displayName = 'NavLink'
+  const { open, setOpen } = useGlobalContext()
   return (
-    <Navbar appearance="subtle" style={{ background: !isTop ? 'transparent' : 'white' }} className={className}>
+    <Navbar appearance="subtle" style={{ background: !isTop ? undefined : 'var(--rs-body)' }} className={className}>
       <Navbar.Brand href="#" style={{ display: 'flex', alignItems: 'center' }}>
-        <NavToggle expand={expand} onChange={() => setExpand(!expand)} />
+        <CustomIconButton
+          icon={expand ? <AngleLeftIcon /> : <AngleRightIcon />}
+          className={styles.showSidebar}
+          expand={expand}
+          onChange={() => setExpand(!expand)}
+        />
+        <AutoFix top={50}>
+          <IconButton
+            className={styles.showSidebarModal}
+            circle
+            onClick={() => setOpen(!open)}
+            size="sm"
+            icon={<AngleRightIcon />}
+          />
+        </AutoFix>
       </Navbar.Brand>
       <Nav onSelect={setActiveKey} activeKey={activeKey}>
         <Nav.Item as={NavLink} eventKey="/home" to="/home" icon={<HomeIcon />}>

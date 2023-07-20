@@ -1,86 +1,86 @@
 
 .content {
-    width: 640px;
-    margin: 45px auto;
+  width: 640px;
+  margin: 45px auto;
 }
 
 .tabs-body {
-    padding: 10px;
+  padding: 10px;
 }
 
 .tabs-header {
-    display: table;
-    padding-left: 20px;
-    width: fit-content;
-    list-style-type: none;
+  display: table;
+  padding-left: 20px;
+  width: fit-content;
+  list-style-type: none;
 }
 
 .tabs-header li {
-    display: table-cell;
-    text-align: center;
-    color: rgb(224, 224, 224);
-    cursor: pointer;
+  display: table-cell;
+  text-align: center;
+  color: rgb(224, 224, 224);
+  cursor: pointer;
 }
 
-.tabs-header li>a {
-    text-decoration: none;
-    display: block;
-    padding: 15px;
-    background: rgb(224, 224, 224);
-    color: darkgray !important;
-    transition: all .2s ease-in;
-    /* 旋转*/
-    transform: skew(-40deg);
+.tabs-header li > a {
+  text-decoration: none;
+  display: block;
+  padding: 15px;
+  background: var(--other);
+  color: darkgray !important;
+  transition: all .2s ease-in;
+  /* 旋转*/
+  transform: skew(-40deg);
 }
 
-.tabs-header li>a span {
-    display: block;
-    transform: skew(40deg);
+.tabs-header li > a span {
+  display: block;
+  transform: skew(40deg);
 }
 
-.tabs-header li>a:hover {
-    background: tomato;
-    color: #F7F9F9 !important;
+.tabs-header li > a:hover {
+  background: var(--secondary);
+  color: #F7F9F9 !important;
 }
 
-.tabs-header li.active>a {
-    background: tomato;
-    color: #F7F9F9 !important;
+.tabs-header li.active > a {
+  background: var(--accent);
+  color: #F7F9F9 !important;
 }
 
 .tabs-content {
-    margin-top: 15px;
-    position: relative;
-    padding: 5px;
-    overflow: hidden;
-    // background: darkgray;
+  margin-top: 15px;
+  position: relative;
+  padding: 5px;
+  overflow: hidden;
+  // background: darkgray;
 }
 
 .tabs-content .tabs-textItem {
-    display: none;
-    transform: translateY(100%);
+  display: none;
+  transform: translateY(100%);
 }
 
 .tabs-content .tabs-textItem.show {
-    display: block;
-    /*一个位置平滑过渡到另一个位置的动画效果*/
-    transform: translateY(0);
-    animation: change .49s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  display: block;
+  /*一个位置平滑过渡到另一个位置的动画效果*/
+  transform: translateY(0);
+  animation: change .49s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .tabs-content .tabs-textItem p {
-    font: normal 15px/1.5 'Open Sans';
-    // color: #F2F3F4;
+  font: normal 15px/1.5 'Open Sans';
+  // color: #F2F3F4;
 }
 
 @keyframes change {
-    0% {
-        transform: translateY(100%);
-        opacity: 0;
-    }
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
 
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }

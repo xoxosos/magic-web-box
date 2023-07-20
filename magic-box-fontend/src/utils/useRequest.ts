@@ -9,10 +9,12 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 // 请求配置对象
 type IRequestConfig = AxiosRequestConfig
+
 // 请求返回结果
 interface IResponse<T = object> extends AxiosResponse {
   data: T
 }
+
 class Request {
   private instance: AxiosInstance
 
@@ -22,7 +24,7 @@ class Request {
     this.instance.interceptors.request.use(
       (config: InternalAxiosRequestConfig) => {
         // 在发送请求之前做些什么
-        config.headers.apifoxToken = 'dROD5webTSINtKEixUxWWBYNnjoRsSXn'
+        // config.headers.saToken = Cookies.get('saToken')
         console.log('请求前拦截器：', config)
         return config
       },
@@ -46,6 +48,7 @@ class Request {
       }
     )
   }
+
   public async get<T = object>(url: string, config?: IRequestConfig): Promise<IResponse<T>> {
     return await this.instance.get<T>(url, config)
   }
@@ -62,6 +65,7 @@ class Request {
     return await this.instance.delete<T>(url, config)
   }
 }
+
 const request = new Request({
   // 根据实际情况修改
   // baseURL: 'https://jsonplaceholder.typicode.com'

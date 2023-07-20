@@ -9,11 +9,13 @@ interface Props {
   name: string
   children: Props[]
 }
+
 type iProps = Props[]
 // 管理和提供全局上下文
 export const GlobalProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [expand, setExpand] = useState(true)
   const [isTop, setTop] = useState(false)
+  const [open, toggleOpen] = useState(false)
   const [menu, setMenu] = useState([])
   const [key, setKey] = useState('')
   const [loading, setLoading] = useState(true)
@@ -46,7 +48,7 @@ export const GlobalProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const handleExpand = () => setExpand(!expand)
   const handleIndex = (i: number) => setIndex(i)
   const toggleTop = (flag: boolean) => setTop(flag)
-
+  const setOpen = (flag: boolean) => toggleOpen(flag)
   const globalContextValue = useMemo(
     () => ({
       handleExpand,
@@ -59,9 +61,11 @@ export const GlobalProvider: FC<{ children: ReactNode }> = ({ children }) => {
       handleLoading,
       handleIndex,
       index,
+      open,
+      setOpen,
       selectedRef
     }),
-    [toggleTop, isTop, expand, menu]
+    [toggleTop, isTop, expand, menu, open]
   )
   return <GlobalContext.Provider value={globalContextValue}>{children}</GlobalContext.Provider>
 }
