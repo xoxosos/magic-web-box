@@ -1,17 +1,17 @@
 /*
  * @Author: LinRenJie
  * @Date: 2023-07-06 16:11:15
- * @LastEditTime: 2023-07-19 17:57:30
+ * @LastEditTime: 2023-07-24 10:23:37
  * @Description:
  * @FilePath: \magic-box-fontend\src\components\content-header\search-box\SearchBox.tsx
  * @Email: xoxosos666@gmail.com
  */
+import GooglePlusCircleIcon from '@rsuite/icons/legacy/GooglePlusCircle'
 import HomeIcon from '@rsuite/icons/legacy/Home'
 import SearchIcon from '@rsuite/icons/legacy/Search'
-import { Button, ButtonToolbar, Input, InputGroup, Nav } from 'rsuite'
-import GooglePlusCircleIcon from '@rsuite/icons/legacy/GooglePlusCircle'
 import TwitterIcon from '@rsuite/icons/legacy/Twitter'
 import { KeyboardEvent, useState } from 'react'
+import { Button, ButtonToolbar, Input, InputGroup, Nav } from 'rsuite'
 
 const styles = {
   width: '90%',
@@ -54,6 +54,7 @@ const Navbar = ({ active, onSelect, ...props }: any) => {
     </Nav>
   )
 }
+
 const SearchBox = () => {
   const [active, setActive] = useState('search')
   const [val, setVal] = useState('')
@@ -83,7 +84,7 @@ const SearchBox = () => {
       <Navbar appearance="subtle" active={active} onSelect={setActive} />
       <InputGroup inside style={styles}>
         <Input
-          onKeyPress={(e) => search(e)}
+          onKeyDown={(e) => search(e)}
           className="search-input "
           value={val}
           onChange={setVal}
