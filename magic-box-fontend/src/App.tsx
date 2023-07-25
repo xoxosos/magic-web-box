@@ -1,11 +1,10 @@
-import './App.less'
-import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom'
+import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import { AuthProvider } from './context/auth/AuthProvider'
-import LoginView from './pages/login/LoginView'
-import { HomeView } from './pages/HomeView'
-import PrivateRoute from './pages/PrivateRoute'
-import PageNotFound from './pages/PageNotFound'
 import { GlobalProvider } from './context/global/GlobalProvider'
+import { HomeView } from './pages/HomeView'
+import PageNotFound from './pages/PageNotFound'
+import PrivateRoute from './pages/PrivateRoute'
+import LoginView from './pages/login/LoginView'
 
 export const App = () => {
   return (

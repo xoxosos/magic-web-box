@@ -1,6 +1,6 @@
-
+@import 'rsuite/styles/index.less';
+@import './assets/theme/custom-theme.less';
 .App {
-  background-color: var(--rs-body);
   display: flex;
   flex-direction: row;
 }
@@ -19,7 +19,6 @@
   height: 100vh;
 }
 
-
 .My-NavBar {
   background: linear-gradient(to right, #ff00ff, #00ffff, #ffff00) !important;
   transition: background-color 1s initial !important;
@@ -27,9 +26,7 @@
 
 .My-NavBar:hover {
   background: linear-gradient(to right, #ff0000, #00ff00, #0000ff) !important;
-
 }
-
 
 /* 滚动条凹槽的颜色，还可以设置边框属性 */
 *::-webkit-scrollbar-track-piece {
@@ -70,21 +67,41 @@
   }
 
   &.rs-nav-item.rs-nav-item-active {
-    color: white
+    color: white;
   }
 }
 
 .content-header-btn {
   padding: 5px;
-  justify-content: center
+  justify-content: center;
 }
 
 .card-item {
+  background-color: var(--card-item);
   margin: 10px 5px 10px 5px;
-  transition: all 0.3s ease;
-  /* 添加过渡效果 */
+  transition: all 0.4s ease;
+  .title {
+    color: var(--text);
+  }
 }
-
+.highlight {
+  z-index: 5;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.highlight::before {
+  content: '';
+  height: 50%;
+  width: 100%;
+  display: block;
+  z-index: -5;
+  opacity: 30%;
+  position: absolute;
+  transition: all 0.3s ease;
+  background: linear-gradient(180deg, transparent 50%, var(--accent) 50%);
+}
 .two-col-layout-right-content {
   height: 100vh;
   width: 100%;
@@ -92,13 +109,16 @@
 }
 
 .card-item:hover {
-  transform: scale(1.05) translateY(-5px);
-  box-shadow: 0 5px 10px rgba(0, 36, 100, .3);
+  transform: scale(1.03) translateY(-6px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 
-  h4 {
-    color: red
+  .title {
+    color: red;
   }
-
+  .highlight::before {
+    transition: all 0.3s ease;
+    height: 100%;
+  }
 }
 
 .card-item-header {
@@ -106,7 +126,6 @@
   border-bottom: 1px solid red;
   display: flex;
   align-items: center;
-
 }
 
 .card-item-header-text {
@@ -149,7 +168,7 @@
 
   &::-webkit-scrollbar-thumb {
     /* 滚动条手柄 */
-    background-color: #00adb5;
+    background-color: var(--accent);
   }
 }
 

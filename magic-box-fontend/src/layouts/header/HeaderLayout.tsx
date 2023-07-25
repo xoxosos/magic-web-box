@@ -1,16 +1,15 @@
-import { IconButton, Nav, Navbar } from 'rsuite'
-import HomeIcon from '@rsuite/icons/legacy/Home'
+import { Icon } from '@rsuite/icons'
 import CogIcon from '@rsuite/icons/legacy/Cog'
-import AngleLeftIcon from '@rsuite/icons/legacy/AngleLeft'
-import AngleRightIcon from '@rsuite/icons/legacy/AngleRight'
-import React from 'react'
-import { Link, LinkProps, useLocation } from 'react-router-dom'
+import HomeIcon from '@rsuite/icons/legacy/Home'
 import GlobalProps from 'globalProps'
+import React from 'react'
+import { BiMenu, BiMenuAltLeft } from 'react-icons/bi'
+import { Link, LinkProps, useLocation } from 'react-router-dom'
+import { IconButton, Nav, Navbar } from 'rsuite'
 import { AutoFix } from '../../components/AutoFix'
-import styles from '../styles/layout.module.less'
 import { CustomIconButton } from '../../components/buttons/CustomIconButton'
 import { useGlobalContext } from '../../context/global/GlobalContext'
-
+import styles from '../styles/layout.module.less'
 interface HeaderProps extends GlobalProps {
   isTop: boolean
   expand: boolean
@@ -31,18 +30,19 @@ export const HeaderLayout = ({ isTop, expand, setExpand, className }: HeaderProp
     <Navbar appearance="subtle" style={{ background: !isTop ? undefined : 'var(--rs-body)' }} className={className}>
       <Navbar.Brand href="#" style={{ display: 'flex', alignItems: 'center' }}>
         <CustomIconButton
-          icon={expand ? <AngleLeftIcon /> : <AngleRightIcon />}
+          icon={expand ? <Icon as={BiMenuAltLeft} size="2rem" /> : <Icon as={BiMenu} size="2rem" />}
           className={styles.showSidebar}
           expand={expand}
           onChange={() => setExpand(!expand)}
         />
         <AutoFix top={50}>
           <IconButton
+            style={{ background: 'none' }}
             className={styles.showSidebarModal}
             circle
             onClick={() => setOpen(!open)}
             size="sm"
-            icon={<AngleRightIcon />}
+            icon={<Icon as={BiMenu} size="2rem" />}
           />
         </AutoFix>
       </Navbar.Brand>

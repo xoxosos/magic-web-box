@@ -1,10 +1,10 @@
+import logo from '@/assets/images/mario.png'
 import DashboardIcon from '@rsuite/icons/legacy/Dashboard'
 import MagicIcon from '@rsuite/icons/legacy/Magic'
 import { CSSProperties, Fragment, useEffect, useState } from 'react'
 import { flushSync } from 'react-dom'
 import { Nav, Sidebar, Sidenav } from 'rsuite'
 import { useGlobalContext } from '../../context/global/GlobalContext'
-import logo from '@/assets/images/mario.png'
 
 interface Props {
   id: number
@@ -35,7 +35,6 @@ export const SideLayout = ({
   initKey: string
   className?: string
 }) => {
-  console.log(menu)
   const { index, handleIndex, selectedRef } = useGlobalContext()
   // 选中的菜单
   const [activeKey, setActiveKey] = useState(initKey)
@@ -66,7 +65,7 @@ export const SideLayout = ({
         <div style={headerStyles}>
           <img src={logo} width="40px" height="40px" />
 
-          <span style={{ marginTop: 'auto', color: '#f33', display: expand ? 'inline' : 'none' }}>Magic Box</span>
+          <h5 style={{ marginTop: 'auto', color: '#f33', display: expand ? 'inline' : 'none' }}>Magic Box</h5>
         </div>
       </Sidenav.Header>
       <Sidenav expanded={expand} defaultOpenKeys={['1']}>
