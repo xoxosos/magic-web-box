@@ -5,8 +5,10 @@ interface Result {
   code: number
   message: string
 }
+
 interface Props {
   id: number
 }
-const urlPix = '/categories/'
+
+const urlPix = '/resources/'
 export const getResource = (params: Props) => request.get<Result>(urlPix + 'getResource', { params })

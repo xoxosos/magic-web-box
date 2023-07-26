@@ -8,13 +8,13 @@
  */
 import { Avatar, Col, FlexboxGrid, Panel, Tag } from 'rsuite'
 
-const Card = () => (
+const Card = (props: any) => (
   <Panel className="card-item">
     <div className="card-item-header">
-      <Avatar size="lg" circle src="https://avatars.githubusercontent.com/u/12592949" alt="@SevenOutman" />
+      <Avatar size="lg" circle src={props.image} alt="@SevenOutman" />
       <div style={{ overflow: 'hidden', padding: '0 5px 0 3px', flex: '1 1 auto' }}>
-        <h4 className="title highlight">title</h4>
-        <p className="card-item-header-text">contentcontentcontentcontentcontent</p>
+        <h4 className="title highlight">{props.name}</h4>
+        <p className="card-item-header-text">{props.name}</p>
       </div>
     </div>
     <div className="card-item-tags">
@@ -43,26 +43,11 @@ const Card = () => (
   </Panel>
 )
 
-export const CardItem = () => (
+export const CardItem = (props) => (
   <div className="show-grid">
     <FlexboxGrid justify="start">
       <FlexboxGrid.Item as={Col} colspan={24} xxl={4} xl={6} lg={8} md={12} sm={12} xs={24}>
-        <Card />
-      </FlexboxGrid.Item>
-      <FlexboxGrid.Item as={Col} colspan={24} xxl={4} xl={6} lg={8} md={12} sm={12} xs={24}>
-        <Card />
-      </FlexboxGrid.Item>
-      <FlexboxGrid.Item as={Col} colspan={24} xxl={4} xl={6} lg={8} md={12} sm={12} xs={24}>
-        <Card />
-      </FlexboxGrid.Item>
-      <FlexboxGrid.Item as={Col} colspan={24} xxl={4} xl={6} lg={8} md={12} sm={12} xs={24}>
-        <Card />
-      </FlexboxGrid.Item>
-      <FlexboxGrid.Item as={Col} colspan={24} xxl={4} xl={6} lg={8} md={12} sm={12} xs={24}>
-        <Card />
-      </FlexboxGrid.Item>
-      <FlexboxGrid.Item as={Col} colspan={24} xxl={4} xl={6} lg={8} md={12} sm={12} xs={24}>
-        <Card />
+        <Card props={props} />
       </FlexboxGrid.Item>
     </FlexboxGrid>
   </div>

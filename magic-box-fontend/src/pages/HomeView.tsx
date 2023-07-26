@@ -61,11 +61,11 @@ export const HomeView = () => {
                 className={styles.showDrawer}
               >
                 <Drawer.Body style={{ padding: 0 }}>
-                  <SideLayout initKey={key as string} menu={menu} expand={open} />
+                  <SideLayout initKey={String(key)} menu={menu} expand={open} />
                 </Drawer.Body>
               </Drawer>
             ) : (
-              <SideLayout className={styles.customSidebar} initKey={key as string} menu={menu} expand={expand} />
+              <SideLayout className={styles.customSidebar} initKey={String(key)} menu={menu} expand={expand} />
             )}
           </section>
           <section className={styles.twoColLayoutRight}>

@@ -1,6 +1,6 @@
 import NProgress from 'nprogress' // 引入nprogress插件
 import 'nprogress/nprogress.css' // 这个nprogress样式必须引入
-import { FC, ReactNode, useEffect, useMemo, useRef, useState } from 'react'
+import { FC, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import useLoginApi from '../../pages/login/service'
 import { GlobalContext } from './GlobalContext'
 
@@ -35,7 +35,6 @@ export const GlobalProvider: FC<{ children: ReactNode }> = ({ children }) => {
         if (code === 0) {
           const key = (data as iProps)?.[0]?.children ? (data as iProps)[0].children[0].id : (data as iProps)[0].id
           console.log(data, key, typeof key)
-
           setKey(key)
           setMenu(data as [])
           setLoading(false)
@@ -53,10 +52,14 @@ export const GlobalProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const handleIndex = (i: number) => setIndex(i)
   const toggleTop = (flag: boolean) => setTop(flag)
   const setOpen = (flag: boolean) => toggleOpen(flag)
-  const setTabKey = (value: number) => {
-    console.log('😊setTabKey', value)
-    setKey(value)
-  }
+  // const setTabKey =
+  const setTabKey = useCallback(
+    (value: number) => {
+      console.log('😊setTabKey', value)
+      setKey(value)
+    },
+    [key]
+  )
   const globalContextValue = useMemo(
     () => ({
       handleExpand,

@@ -1,9 +1,14 @@
 package com.acelin.magicbox.controller;
 
 
-import org.springframework.web.bind.annotation.RequestMapping;
+import com.acelin.magicbox.entity.Resources;
+import com.acelin.magicbox.service.IResourcesService;
+import com.acelin.magicbox.utils.Result;
+import lombok.extern.java.Log;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
-import org.springframework.web.bind.annotation.RestController;
+import java.util.List;
 
 /**
  * <p>
@@ -14,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @since 2023-07-15 10:32:48
  */
 @RestController
-@RequestMapping("/magicbox/resources")
+@RequestMapping("/resources")
 public class ResourcesController {
     final IResourcesService iResourcesService;
 
@@ -22,8 +27,9 @@ public class ResourcesController {
     public ResourcesController(IResourcesService iResourcesService) {
         this.iResourcesService = iResourcesService;
     }
-    @GetMapping("/getResource/{id}")
-    public Result<List<Resources>> getResources(@PathVariable("id") long id){
-        return iResourcesService.getResources();
+    @GetMapping("/getResource")
+    public Result<List<Resources>> getResources(@RequestParam("id") long id){
+        System.out.println(id);
+        return iResourcesService.getResources(id);
     }
 }
