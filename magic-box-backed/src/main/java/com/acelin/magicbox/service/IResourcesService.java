@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2023-07-15 10:32:48
  */
 public interface IResourcesService extends IService<Resources> {
-
+    Result<List<Resources>> getResources();
 }

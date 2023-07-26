@@ -16,5 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/magicbox/resources")
 public class ResourcesController {
+    final IResourcesService iResourcesService;
 
+    @Autowired
+    public ResourcesController(IResourcesService iResourcesService) {
+        this.iResourcesService = iResourcesService;
+    }
+    @GetMapping("/getResource/{id}")
+    public Result<List<Resources>> getResources(@PathVariable("id") long id){
+        return iResourcesService.getResources();
+    }
 }
