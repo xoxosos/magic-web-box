@@ -35,11 +35,19 @@ export const SideLayout = ({
   initKey: string
   className?: string
 }) => {
-  const { index, handleIndex, selectedRef } = useGlobalContext()
+  const { index, handleIndex, selectedRef, setTabKey, key } = useGlobalContext()
+  console.log(initKey)
+
   // 选中的菜单
-  const [activeKey, setActiveKey] = useState(initKey)
+  const [activeKey, setActiveKey] = useState('0')
   const handleSelect = (eventKey: string) => {
+    console.log('eventKey', eventKey)
     setActiveKey(eventKey)
+  }
+  const itemClick = (id: number) => {
+    console.log(id)
+    // 设置选择的item
+    setTabKey(id)
   }
   const scrollToRef = (index = 0) => {
     flushSync(() => {
@@ -47,8 +55,8 @@ export const SideLayout = ({
     })
   }
   useEffect(() => {
-    setActiveKey(initKey)
-  }, [initKey])
+    setActiveKey((key as number).toString())
+  }, [key])
   useEffect(() => {
     // 滚动到对应的区域
     if (selectedRef.current) {
@@ -83,7 +91,7 @@ export const SideLayout = ({
                     >
                       {item.children.map((child: Props) => {
                         return (
-                          <Nav.Item key={child.id} eventKey={child.id.toString()}>
+                          <Nav.Item onClick={() => itemClick(child.id)} key={child.id} eventKey={child.id.toString()}>
                             {child.name}
                           </Nav.Item>
                         )

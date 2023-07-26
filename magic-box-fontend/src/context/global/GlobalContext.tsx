@@ -15,7 +15,8 @@ interface Props {
   handleIndex: (value: number) => void
   selectedRef: any
   handleLoading?: (value: params) => void
-  key?: string
+  key?: number
+  setTabKey: (value: number) => void
 }
 
 // 上下文对象初始值
@@ -42,7 +43,10 @@ const globalContext: Props = {
   handleLoading: () => {
     //
   },
-  key: ''
+  key: 1,
+  setTabKey: () => {
+    //
+  }
 }
 // 创建上下文对象
 export const GlobalContext = createContext<Props>(globalContext)

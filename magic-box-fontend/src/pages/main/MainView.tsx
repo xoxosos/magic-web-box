@@ -34,7 +34,7 @@ export function MainView() {
         return (
           <div ref={index === i ? selectedRef : null} key={item.id}>
             <h4 style={{ padding: '15px 25px 0 25px', borderBottom: '1px solid gainsboro' }}>{item.name}</h4>
-            <Tabs data={item.children}>
+            <Tabs tabIndex={i} data={item.children}>
               <CardItem />
             </Tabs>
           </div>

@@ -17,7 +17,8 @@ export const GlobalProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const [isTop, setTop] = useState(false)
   const [open, toggleOpen] = useState(false)
   const [menu, setMenu] = useState([])
-  const [key, setKey] = useState('')
+  // key -> id
+  const [key, setKey] = useState(1)
   const [loading, setLoading] = useState(true)
   const selectedRef = useRef(null)
   const [index, setIndex] = useState(100)
@@ -30,9 +31,12 @@ export const GlobalProvider: FC<{ children: ReactNode }> = ({ children }) => {
       try {
         const res = await useLoginApi.getCategories()
         const { data, code } = res?.data || {}
+
         if (code === 0) {
           const key = (data as iProps)?.[0]?.children ? (data as iProps)[0].children[0].id : (data as iProps)[0].id
-          setKey(key.toString())
+          console.log(data, key, typeof key)
+
+          setKey(key)
           setMenu(data as [])
           setLoading(false)
           NProgress.done()
@@ -49,6 +53,10 @@ export const GlobalProvider: FC<{ children: ReactNode }> = ({ children }) => {
   const handleIndex = (i: number) => setIndex(i)
   const toggleTop = (flag: boolean) => setTop(flag)
   const setOpen = (flag: boolean) => toggleOpen(flag)
+  const setTabKey = (value: number) => {
+    console.log('😊setTabKey', value)
+    setKey(value)
+  }
   const globalContextValue = useMemo(
     () => ({
       handleExpand,
@@ -57,6 +65,7 @@ export const GlobalProvider: FC<{ children: ReactNode }> = ({ children }) => {
       expand,
       menu,
       key,
+      setTabKey,
       loading,
       handleLoading,
       handleIndex,

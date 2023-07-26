@@ -1,26 +1,39 @@
 /*
  * @Author: LinRenJie
  * @Date: 2023-07-06 14:17:23
- * @LastEditTime: 2023-07-06 15:05:54
+ * @LastEditTime: 2023-07-26 16:27:40
  * @Description:
- * @FilePath: \react-test\src\components\tabs\tab1.tsx
+ * @FilePath: \magic-box-fontend\src\components\tabs\tabs.tsx
  * @Email: xoxosos666@gmail.com
  */
 import { useState } from 'react'
 
+import { useEffect } from 'react'
+import { useGlobalContext } from '../../context/global/GlobalContext'
 import styles from './tab.module.less'
-
-const Tabs = ({ data, children }) => {
-  const [activeTab, setActiveTab] = useState(0)
-
-  const changeTabOnClick = (index) => {
-    setActiveTab(index)
+const Tabs = ({ data, children, tabIndex }) => {
+  const { key, setTabKey, index } = useGlobalContext()
+  console.log('😘Tabs', data, key, setTabKey)
+  const id = data[0]?.id || 0
+  const [activeTab, setActiveTab] = useState(id)
+  useEffect(() => {
+    console.log(index)
+    if (index === tabIndex) {
+      setActiveTab(key)
+    }
+    return
+  }, [key])
+  const changeTabOnClick = (id: number) => {
+    setActiveTab(id)
+    setTabKey(id)
   }
 
   return (
     <div className={styles.tabsBody}>
       <TabHeader data={data} click={changeTabOnClick} activeId={activeTab} />
-      <TabContent data={data} activeId={activeTab} children={children} />
+      <TabContent data={data} activeId={activeTab}>
+        {children}
+      </TabContent>
     </div>
   )
 }
@@ -31,8 +44,8 @@ const TabHeader = ({ data, click, activeId }) => {
   }
 
   const tabs = data.map((item, index) => (
-    <li className={activeId === index ? styles.active : ''} key={index}>
-      <a onClick={() => doClick(index)}>
+    <li className={activeId === item.id ? styles.active : ''} key={item.name}>
+      <a onClick={() => doClick(item.id)}>
         <span>{item.name}</span>
       </a>
     </li>
