@@ -1,22 +1,25 @@
 /*
  * @Author: LinRenJie
  * @Date: 2023-07-06 14:17:23
- * @LastEditTime: 2023-07-26 16:27:40
+ * @LastEditTime: 2023-08-18 10:15:32
  * @Description:
  * @FilePath: \magic-box-fontend\src\components\tabs\tabs.tsx
  * @Email: xoxosos666@gmail.com
  */
 import { useCallback, useEffect, useState } from 'react'
 import { useGlobalContext } from '../../context/global/GlobalContext'
-import styles from './tab.module.less'
 import { getResource } from '../../pages/main/api'
 import { TabContent } from './TabContent'
 import { TabHeader } from './TabHeader'
-
-const Tabs = ({ data, tabIndex }) => {
+import styles from './tab.module.less'
+interface TabProps {
+  data: unknown
+  tabIndex: number
+}
+const Tabs = ({ data, tabIndex }: TabProps) => {
   const { key, setTabKey, index, handleIndex } = useGlobalContext()
   console.log('😘Tabs', data, key, setTabKey)
-  const id = data[0]?.id || 0
+  const id = (Array.isArray(data) && data[0]?.id) || 0
   const [activeTab, setActiveTab] = useState(id)
   const [content, setContent] = useState([])
   const fetchData = async (id: number) => {

@@ -55,31 +55,7 @@
   // background: darkgray;
 }
 
-.tabs-content .tabs-textItem {
-  display: none;
-  transform: translateY(100%);
-}
-
-.tabs-content .tabs-textItem.show {
-  display: block;
-  /*一个位置平滑过渡到另一个位置的动画效果*/
-  transform: translateY(0);
-  animation: change 0.49s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
 .tabs-content .tabs-textItem p {
   font: normal 15px/1.5 'Open Sans';
   // color: #F2F3F4;
-}
-
-@keyframes change {
-  0% {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
 }
