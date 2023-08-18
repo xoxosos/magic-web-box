@@ -1,3 +1,8 @@
+/*
+ * @Author: LinRenJie xoxosos666@gmail.com
+ * @Date: 2023-08-18 22:53:42
+ * @Description:
+ */
 import { useEffect, useState } from 'react'
 import { Animation } from 'rsuite'
 import { CardItem } from '../CardItem'
@@ -6,6 +11,7 @@ interface ItemProps {
   id: number
   name: string
   image: string
+  description: string
   [key: string]: string | number
 }
 
@@ -30,7 +36,7 @@ export const TabContent = ({ data, activeId }: Props) => {
         {data.map((item: any, index: number) => (
           <div key={item}>
             <p>{item.name}</p>
-            <CardItem props={item} />
+            <CardItem data={item} />
           </div>
         ))}
       </div>

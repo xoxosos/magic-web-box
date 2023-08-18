@@ -83,6 +83,9 @@
   .title {
     color: var(--text);
   }
+  .rs-panel-body {
+    padding: 12px 13px 13px 13px;
+  }
 }
 .highlight {
   z-index: 5;
@@ -124,6 +127,7 @@
 .card-item-header {
   cursor: pointer;
   border-bottom: 1px solid red;
+  padding-bottom: 5px;
   display: flex;
   align-items: center;
 }
@@ -196,4 +200,41 @@
   &.rs-input-group-btn:active {
     background-color: transparent !important;
   }
+}
+.single-line {
+  // word-break: break-all;
+  white-space: nowrap; /* 文本不换行 */
+  overflow: hidden; /* 超出容器部分隐藏 */
+  text-overflow: ellipsis; /* 使用省略号表示被截断的文本 */
+}
+.double-line {
+  // word-break: break-all;
+  display: -webkit-box; /* 使用WebKit引擎的box布局 */
+  -webkit-box-orient: vertical; /* 垂直方向排列 */
+  -webkit-line-clamp: 2; /* 最多显示2行文本 */
+  overflow: hidden; /* 超出容器部分隐藏 */
+  text-overflow: ellipsis; /* 使用省略号表示被截断的文本 */
+}
+.over-line {
+  height: 65px;
+  word-break: break-all;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+.tooltip {
+  position: absolute;
+  top: 100%;
+  transform: translate(-50%, 0);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px;
+  z-index: 1;
+  min-width: 200px;
 }

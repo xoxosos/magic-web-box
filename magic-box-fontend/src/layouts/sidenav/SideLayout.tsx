@@ -84,6 +84,7 @@ export const SideLayout = ({
                 <Fragment key={item.id}>
                   {item.children.length > 0 ? (
                     <Nav.Menu
+                      style={{ fontSize: '15px' }}
                       onClick={() => scrollToRef(i)}
                       title={item.name}
                       eventKey={item.id.toString()}
@@ -91,7 +92,12 @@ export const SideLayout = ({
                     >
                       {item.children.map((child: Props) => {
                         return (
-                          <Nav.Item onClick={() => itemClick(child.id)} key={child.id} eventKey={child.id.toString()}>
+                          <Nav.Item
+                            style={{ fontSize: '15px' }}
+                            onClick={() => itemClick(child.id)}
+                            key={child.id}
+                            eventKey={child.id.toString()}
+                          >
                             {child.name}
                           </Nav.Item>
                         )

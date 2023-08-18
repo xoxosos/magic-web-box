@@ -1,7 +1,7 @@
 /*
  * @Author: LinRenJie
  * @Date: 2023-07-06 16:11:15
- * @LastEditTime: 2023-07-25 15:10:03
+ * @LastEditTime: 2023-08-19 01:32:37
  * @Description:
  * @FilePath: \magic-box-fontend\src\components\content-header\search-box\SearchBox.tsx
  * @Email: xoxosos666@gmail.com
@@ -9,7 +9,7 @@
 import { Icon } from '@rsuite/icons'
 import HomeIcon from '@rsuite/icons/legacy/Home'
 import SearchIcon from '@rsuite/icons/legacy/Search'
-import { KeyboardEvent, useState } from 'react'
+import { KeyboardEvent, useRef, useState } from 'react'
 import { BiLogoBaidu, BiLogoBing, BiLogoGoogle } from 'react-icons/bi'
 import { Button, ButtonToolbar, Input, InputGroup, Nav } from 'rsuite'
 import styles from '../styles.module.less'
@@ -60,7 +60,12 @@ const SearchBox = () => {
   const [active, setActive] = useState('search')
   const [val, setVal] = useState('')
   const [type, setType] = useState<SearchEngine>('baidu')
-
+  const inputRef = useRef()
+  const handleClick = (type: SearchEngine) => {
+    setType(type)
+    setVal('')
+    inputRef?.current?.focus()
+  }
   const search = (e?: KeyboardEvent<HTMLInputElement>) => {
     const searchEngineUrls: { [key: string]: string } = {
       baidu: 'https://www.baidu.com/s?wd=',
@@ -85,6 +90,7 @@ const SearchBox = () => {
       <Navbar appearance="subtle" active={active} onSelect={setActive} />
       <InputGroup inside style={style}>
         <Input
+          ref={inputRef}
           onKeyDown={(e) => search(e)}
           className="search-input "
           value={val}
@@ -99,7 +105,7 @@ const SearchBox = () => {
       {active === 'search' && (
         <ButtonToolbar className="content-header-btn">
           <Button
-            onClick={() => setType('baidu')}
+            onClick={() => handleClick('baidu')}
             color="blue"
             appearance="primary"
             startIcon={<Icon as={BiLogoBaidu} size="1rem" />}
@@ -107,7 +113,7 @@ const SearchBox = () => {
             Baidu
           </Button>
           <Button
-            onClick={() => setType('google')}
+            onClick={() => handleClick('google')}
             color="red"
             appearance="primary"
             startIcon={<Icon as={BiLogoGoogle} size="1rem" />}
@@ -115,7 +121,7 @@ const SearchBox = () => {
             Google
           </Button>
           <Button
-            onClick={() => setType('bing')}
+            onClick={() => handleClick('bing')}
             color="cyan"
             appearance="primary"
             startIcon={<Icon as={BiLogoBing} size="1rem" />}

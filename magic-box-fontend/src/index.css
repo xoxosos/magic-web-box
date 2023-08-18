@@ -1,7 +1,11 @@
+@font-face {
+  font-family: 'Lato';
+  src: url('./assets/fonts/Lato-Regular.ttf') format('truetype');
+}
 :root {
   --linearGradient: linear-gradient(-45deg, var(--primary), var(--other), var(--accent), rgb(253, 212, 206));
-  --ff-base: 'Nunito Sans', 'Roboto', Inter, sans-serif;
-  --ff-accent: 'Nunito Sans', 'Roboto', Inter, sans-serif;
+  --ff-base: 'Lato', Inter, sans-serif;
+  --ff-accent: 'Lato', Inter, sans-serif;
   --secondaryBg: rgb(250, 250, 250);
   --other: #f2e5ee;
   --card-item: #f2f2f2;
@@ -60,4 +64,5 @@ body {
   font-family: var(--ff-base);
   overflow: hidden;
   transition: background-color 0.2s;
+  font-size: 15px;
 }
