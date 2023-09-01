@@ -5,7 +5,6 @@
  */
 import ImageWrapper from '../../components/content-header/ImageWrapper'
 import Tabs from '../../components/tabs/tabs'
-import { SelectParent } from '../../components/test/SelectParent'
 import { useGlobalContext } from '../../context/global/GlobalContext'
 
 export function MainView() {
@@ -26,23 +25,6 @@ export function MainView() {
           </div>
         )
       })}
-      <SelectParent />
-      <h1>main</h1>
-      <h1>main</h1> <h1>main</h1> <h1>main</h1> <h1>main</h1>
-      <h1>main</h1>
-      <h1>main</h1>
-      <h1>main</h1>
-      <h1>main</h1>
-      <h1>main</h1> <h1>main</h1>
-      <h1>main</h1>
-      <h1>main</h1>
-      <h1>main</h1>
-      <h1>main</h1>
-      <h1>main</h1>
-      <h1>main</h1>
-      <h1>main</h1>
-      <h1>main</h1> <h1>main</h1>
-      <h1>main</h1>
     </>
   )
 }

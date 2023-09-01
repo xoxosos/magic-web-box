@@ -1,4 +1,4 @@
-import logo from '@/assets/images/mario.png'
+import logo from '@/assets/images/logo.png'
 import DashboardIcon from '@rsuite/icons/legacy/Dashboard'
 import MagicIcon from '@rsuite/icons/legacy/Magic'
 import { CSSProperties, Fragment, useEffect, useState } from 'react'
@@ -22,7 +22,9 @@ const headerStyles = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between'
-} as { [key: string]: CSSProperties }
+} as {
+  [key: string]: CSSProperties
+}
 
 export const SideLayout = ({
   expand,
@@ -37,7 +39,6 @@ export const SideLayout = ({
 }) => {
   const { index, handleIndex, selectedRef, setTabKey, key } = useGlobalContext()
   console.log(initKey)
-
   // 选中的菜单
   const [activeKey, setActiveKey] = useState('0')
   const handleSelect = (eventKey: string) => {
@@ -71,9 +72,10 @@ export const SideLayout = ({
     <Sidebar className={className} width={expand ? 210 : 56} collapsible>
       <Sidenav.Header>
         <div style={headerStyles}>
-          <img src={logo} width="40px" height="40px" />
-
-          <h5 style={{ marginTop: 'auto', color: '#f33', display: expand ? 'inline' : 'none' }}>Magic Box</h5>
+          <img src={logo} width="40px" height="40px" alt="" />
+          <h5 className="side-logo-text" style={{ display: expand ? 'inline' : 'none' }}>
+            Geek Heaven
+          </h5>
         </div>
       </Sidenav.Header>
       <Sidenav expanded={expand} defaultOpenKeys={['1']}>

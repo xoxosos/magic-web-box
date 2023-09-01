@@ -4,10 +4,12 @@
  * @Description:
  */
 import { Avatar, Panel, Tag } from 'rsuite'
+
 interface Data {
   image: string
   name: string
   description: string
+
   [key: string]: string | number
 }
 
@@ -23,7 +25,7 @@ export const Card = ({ data }: DataProps) => {
     <Panel className="card-item" onClick={() => handleClick(data.link as string)}>
       <div className="card-item-header">
         <Avatar size="lg" circle src={data.image} alt="@SevenOutman" />
-        <div style={{ overflow: 'hidden', padding: '0 5px 0 3px', flex: '1 1 auto' }}>
+        <div style={{ overflow: 'hidden', padding: '0 5px 0 5px', flex: '1 1 auto' }}>
           <div className="highlight">
             <h5 className="title  single-line ">{data.name}</h5>
           </div>

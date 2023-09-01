@@ -1,12 +1,17 @@
+/*
+ * @Author: LinRenJie xoxosos666@gmail.com
+ * @Date: 2023-07-19 21:52:08
+ * @Description:
+ */
 import { CustomProvider, Drawer, Footer } from 'rsuite'
 import zhCN from 'rsuite/esm/locales/zh_CN'
 
 import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { SettingHover } from '../components/SettingHover'
-import { WeatherProvider } from '../context/WeatherContext'
 import { useTokenContext } from '../context/auth/AuthContext'
 import { useGlobalContext } from '../context/global/GlobalContext'
+import { WeatherProvider } from '../context/WeatherContext'
 import ContentLayout from '../layouts/content/ContentLayout'
 import { HeaderLayout } from '../layouts/header/HeaderLayout'
 import { SideLayout } from '../layouts/sidenav/SideLayout'
@@ -22,15 +27,15 @@ export const HomeView = () => {
   // js 监听系统主题模式
   const scheme = window.matchMedia('(prefers-color-scheme: dark)')
   const isDarkMode = scheme.matches
-  // isDarkMode ? (content.dataset.theme = 'dark') : (content.dataset.theme = 'light')
   const [theme, setTheme] = useState<themeUnionType>(isDarkMode ? 'dark' : 'light')
   const { token } = useTokenContext()
   const { expand, handleExpand, isTop, toggleTop, menu, key, open, setOpen } = useGlobalContext()
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark')
-    content.dataset.theme = theme === 'dark' ? 'light' : 'dark'
-    // content.setAttribute('class', theme === 'dark' ? 'light-scheme' : 'dark-scheme')
   }
+  useEffect(() => {
+    content.dataset.theme = theme
+  }, [theme])
   const [windowWidth, setWindowWidth] = useState(window.innerWidth)
 
   const handleResize = () => {

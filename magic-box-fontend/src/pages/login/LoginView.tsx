@@ -1,11 +1,15 @@
-import { Button, ButtonToolbar, FlexboxGrid, Form, Message, Panel, useToaster } from 'rsuite'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { Button, ButtonToolbar, FlexboxGrid, Form, Message, Panel, useToaster } from 'rsuite'
 import { useTokenContext } from '../../context/auth/AuthContext'
-import styles from './login.module.less'
 import './login.less'
+import styles from './login.module.less'
 import useLoginApi from './service'
-
+const CustomMessage = ({ type, msg }) => (
+  <Message showIcon type={type} closable>
+    {msg}
+  </Message>
+)
 function LoginView() {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -13,7 +17,7 @@ function LoginView() {
   const [isLogin, setIsLogin] = useState(true)
   const navigate = useNavigate()
   // 使用setToken来更新token 重新渲染
-  const { setToken } = useTokenContext()
+  const { setToken, token } = useTokenContext()
   const toaster = useToaster()
   const handleSubmit = async (type = 'login') => {
     const res =
@@ -33,12 +37,11 @@ function LoginView() {
         {message}
       </Message>
     )
+
     if (isLogin) {
-      localStorage.setItem('token', data?.token as string)
-      setToken(res?.data?.data?.token)
+      setToken(data?.token)
       // 登录成功后跳转到首页
       navigate('/home')
-      console.log(localStorage.getItem('token'))
     } else {
       setIsLogin(!isLogin)
     }

@@ -24,8 +24,8 @@ const viteConfig = defineConfig(({ mode }: ConfigEnv): UserConfig => {
         threshold: 10240, // 即10kb以上即会压缩
         // 压缩算法 可选 'gzip' | 'brotliCompress' | 'deflate' | 'deflateRaw'
         algorithm: env.VITE_BUILD_COMPRESS as any,
-        // 压缩后是否删除源文件
-        deleteOriginFile: true,
+        // 压缩后是否删除源文件 最好保留源文件，兼容性问题
+        deleteOriginFile: false,
         // 压缩后的文件格式
         ext: '.gz'
       })

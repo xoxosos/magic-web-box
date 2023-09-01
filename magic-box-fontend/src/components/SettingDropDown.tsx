@@ -1,7 +1,12 @@
-import { Dropdown, DropdownProps } from 'rsuite'
-import Toolbar from './Toolbar'
+/*
+ * @Author: LinRenJie xoxosos666@gmail.com
+ * @Date: 2023-07-16 19:44:17
+ * @Description:
+ */
 import CogIcon from '@rsuite/icons/legacy/Cog'
+import { Dropdown, DropdownProps } from 'rsuite'
 import { useTokenContext } from '../context/auth/AuthContext'
+import Toolbar from './Toolbar'
 
 type themeUnionType = 'dark' | 'light' | 'high-contrast' | undefined
 
@@ -29,12 +34,7 @@ const CustomDropdown = ({ theme, toggleTheme, ...props }: Props) => {
 
 const SettingDropDown = ({ theme, toggleTheme, title }: Props) => (
   <>
-    <CustomDropdown
-      theme={theme}
-      toggleTheme={toggleTheme}
-      title={title}
-      trigger="hover"
-    ></CustomDropdown>
+    <CustomDropdown theme={theme} toggleTheme={toggleTheme} title={title} trigger="hover"></CustomDropdown>
   </>
 )
 export default SettingDropDown

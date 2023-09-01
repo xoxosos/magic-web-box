@@ -1,35 +1,36 @@
 @font-face {
-  font-family: 'Lato';
-  src: url('./assets/fonts/Lato-Regular.ttf') format('truetype');
+    font-family: 'Lato';
+    src: url('./assets/fonts/Lato-Regular.ttf') format('truetype');
 }
+
 :root {
-  --linearGradient: linear-gradient(-45deg, var(--primary), var(--other), var(--accent), rgb(253, 212, 206));
-  --ff-base: 'Lato', Inter, sans-serif;
-  --ff-accent: 'Lato', Inter, sans-serif;
-  --secondaryBg: rgb(250, 250, 250);
-  --other: #f2e5ee;
-  --card-item: #f2f2f2;
-  --text: rgb(5, 5, 5);
-  --background: rgb(250, 250, 250);
-  --primary: rgb(164, 26, 4);
-  --secondary: rgb(253, 212, 206);
-  --accent: rgb(248, 39, 7);
+    --linearGradient: linear-gradient(-45deg, #fccb90, #d57eeb, rgb(253, 212, 206));
+    --ff-base: 'Lato', Inter, sans-serif;
+    --ff-accent: 'Lato', Inter, sans-serif;
+    --secondaryBg: rgb(250, 250, 250);
+    --other: #f2e5ee;
+    --card-item: #ddd;
+    --text: rgb(5, 5, 5);
+    --background: rgb(250, 250, 250);
+    --primary: #d57eeb;
+    --secondary: rgb(253, 212, 206);
+    --accent: linear-gradient(-45deg, #fccb90, #d57eeb, rgb(253, 212, 206));
 }
 
 body[data-theme='dark'] {
-  /* --text: rgb(250, 250, 250);
-  --background: rgb(5, 5, 5);
-  --primary: rgb(208, 139, 191);
-  --secondary: rgb(15, 31, 36);
-  --accent: rgb(194, 210, 147); */
-  --text: rgb(250, 250, 250);
-  --background: rgb(5, 5, 5);
-  --primary: rgb(164, 26, 4);
-  --secondary: rgb(49, 8, 2);
-  --accent: rgb(251, 125, 106);
-  --secondaryBg: rgba(169, 164, 164, 0.15);
-  --other: #f2e5ee;
-  --card-item: rgba(169, 164, 164, 0.15);
+    /* --text: rgb(250, 250, 250);
+    --background: rgb(5, 5, 5);
+    --primary: rgb(208, 139, 191);
+    --secondary: rgb(15, 31, 36);
+    --accent: rgb(194, 210, 147); */
+    --text: rgb(250, 250, 250);
+    --background: rgb(5, 5, 5);
+    --primary: #fccb90;
+    --secondary: #fccb90;
+    --accent: linear-gradient(-45deg, #fccb90, #d57eeb, rgb(253, 212, 206));
+    --secondaryBg: rgba(169, 164, 164, 0.15);
+    --other: #f2e5ee;
+    --card-item: rgba(169, 164, 164, 0.15);
 }
 
 /*@media (prefers-color-scheme: dark) {*/
@@ -45,24 +46,29 @@ body[data-theme='dark'] {
 /*}*/
 
 #root {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 * {
-  margin: 0;
+    margin: 0;
 }
 
 body {
-  font-family: var(--ff-base);
-  overflow: hidden;
-  transition: background-color 0.2s;
-  font-size: 15px;
+    font-family: var(--ff-base);
+    overflow: hidden;
+    transition: background-color 0.2s;
+    font-size: 15px;
+}
+
+.side-logo-text {
+    color: var(--primary);
+    margin-top: auto;
 }

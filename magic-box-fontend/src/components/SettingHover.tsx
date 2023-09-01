@@ -63,16 +63,21 @@ export function SettingHover({ isTop, setTop, theme, toggleTheme }: Props) {
         id="scrollToTopButton"
         onClick={handleClick}
         icon={<ArrowUpLineIcon />}
-        color="blue"
-        style={{ display: isTop ? undefined : 'none', marginBottom: '5px' }}
+        style={{
+          display: isTop ? undefined : 'none',
+          marginBottom: '5px',
+          color: 'white'
+        }}
         appearance="primary"
         circle
       />
       <IconButton
         onClick={toggleTheme}
         icon={<Icon as={theme === 'dark' ? BiSun : BiSolidMoon} />}
-        color={theme === 'dark' ? 'blue' : 'red'}
         appearance="primary"
+        style={{
+          color: 'white'
+        }}
         circle
       />
     </div>

@@ -1,12 +1,5 @@
-/*
- * @Author: LinRenJie linrenjie@houseitech.com
- * @Date: 2023-07-18 17:51:00
- * @LastEditors: LinRenJie linrenjie@houseitech.com
- * @LastEditTime: 2023-07-19 13:12:04
- * @FilePath: \magic-box-fontend\src\utils\useRequest.ts
- * @Description:
- */
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
+import Cookies from 'react-cookies'
 // 请求配置对象
 type IRequestConfig = AxiosRequestConfig
 
@@ -24,13 +17,13 @@ class Request {
     this.instance.interceptors.request.use(
       (config: InternalAxiosRequestConfig) => {
         // 在发送请求之前做些什么
-        // config.headers.saToken = Cookies.get('saToken')
+        config.headers.saToken = Cookies.load('saToken')
         console.log('请求前拦截器：', config)
         return config
       },
       (error: unknown) => {
         // 对请求错误做些什么
-        console.error('请求前拦截器错误：', error)
+        console.error('请求前捕获的错误：', error)
         return Promise.reject(error)
       }
     )
@@ -43,7 +36,7 @@ class Request {
       },
       (error: unknown) => {
         // 对响应错误做点什么
-        console.error('响应后拦截器错误：', error)
+        console.error('响应后捕获的错误：', error)
         return Promise.reject(error)
       }
     )
