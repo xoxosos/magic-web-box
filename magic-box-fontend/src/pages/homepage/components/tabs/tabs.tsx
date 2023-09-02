@@ -1,22 +1,12 @@
-/*
- * @Author: LinRenJie
- * @Date: 2023-07-06 14:17:23
- * @LastEditTime: 2023-08-18 10:15:32
- * @Description:
- * @FilePath: \magic-box-fontend\src\components\tabs\tabs.tsx
- * @Email: xoxosos666@gmail.com
- */
 import { useCallback, useEffect, useState } from 'react'
-import { useGlobalContext } from '../../context/global/GlobalContext'
-import { getResource } from '../../pages/main/api'
+import { useGlobalContext } from '../../../../context/global/GlobalContext'
+import { getResource } from '../../api'
 import { TabContent } from './TabContent'
 import { TabHeader } from './TabHeader'
 import styles from './tab.module.less'
-interface TabProps {
-  data: unknown
-  tabIndex: number
-}
-const Tabs = ({ data, tabIndex }: TabProps) => {
+import { Props } from './types'
+
+const Tabs = ({ data, tabIndex }: Props) => {
   const { key, setTabKey, index, handleIndex } = useGlobalContext()
   console.log('😘Tabs', data, key, setTabKey)
   const id = (Array.isArray(data) && data[0]?.id) || 0
@@ -36,7 +26,7 @@ const Tabs = ({ data, tabIndex }: TabProps) => {
   useEffect(() => {
     console.log('😊Tabs', tabIndex, index)
     if (index === tabIndex) {
-      setActiveTab(key)
+      setActiveTab(key as number)
       fetchData(key as number)
     }
   }, [key])

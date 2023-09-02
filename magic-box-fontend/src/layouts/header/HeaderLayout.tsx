@@ -6,10 +6,11 @@ import React from 'react'
 import { BiMenu, BiMenuAltLeft } from 'react-icons/bi'
 import { Link, LinkProps, useLocation } from 'react-router-dom'
 import { IconButton, Nav, Navbar } from 'rsuite'
-import { AutoFix } from '../../components/AutoFix'
+import { AutoFix } from '../../components/autofix/AutoFix'
 import { CustomIconButton } from '../../components/buttons/CustomIconButton'
 import { useGlobalContext } from '../../context/global/GlobalContext'
 import styles from '../styles/layout.module.less'
+
 interface HeaderProps extends GlobalProps {
   isTop: boolean
   expand: boolean
@@ -50,20 +51,17 @@ export const HeaderLayout = ({ isTop, expand, setExpand, className }: HeaderProp
         <Nav.Item as={NavLink} eventKey="/home" to="/home" icon={<HomeIcon />}>
           主页
         </Nav.Item>
-        <Nav.Item as={NavLink} eventKey="2" to="/login">
+        <Nav.Item as={NavLink} eventKey="2" to="https://page.look4u.top">
           关于
         </Nav.Item>
-        <Nav.Item as={NavLink} eventKey="/home/product" to="/home/product">
-          其他
-        </Nav.Item>
-        <Nav.Menu eventKey="2-1" title="应用">
+        <Nav.Menu eventKey="2-1" title="其他">
           <Nav.Item eventKey="4">天气APP</Nav.Item>
           <Nav.Item eventKey="5">TodoList</Nav.Item>
           <Nav.Item eventKey="6">...</Nav.Item>
         </Nav.Menu>
       </Nav>
       <Nav pullRight>
-        <Nav.Item icon={<CogIcon />}>Settings</Nav.Item>
+        <Nav.Item icon={<CogIcon />}></Nav.Item>
       </Nav>
     </Navbar>
   )

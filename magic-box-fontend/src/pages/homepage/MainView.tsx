@@ -3,8 +3,8 @@
  * @Date: 2023-07-26 20:40:41
  * @Description:
  */
-import ImageWrapper from '../../components/content-header/ImageWrapper'
-import Tabs from '../../components/tabs/tabs'
+import ImageWrapper from './components/content-header/ImageWrapper'
+import Tabs from './components/tabs/tabs'
 import { useGlobalContext } from '../../context/global/GlobalContext'
 
 export function MainView() {

@@ -1,0 +1,51 @@
+.image-wrapper {
+  background: var(--linearGradient);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 700px;
+  display: flex;
+  @media (min-width: 0px) and (max-width: 600px) {
+    /* 在宽度在 0 到 400 像素之间时应用的样式 */
+    height: 300px;
+  }
+}
+
+@keyframes move {
+  100% {
+    transform: translate3d(0, 0, 1px) rotate(360deg);
+  }
+}
+
+.search-box {
+  padding: 5px;
+  
+  h1 {
+    color: white;
+    @media (max-width: 1050px) {
+      font-size: 22px;
+    }
+    @media (max-width: 550px) {
+      font-size: 18px;
+    }
+    @media (max-width: 478px) {
+      font-size: 16px;
+    }
+    @media (max-width: 393px) {
+      font-size: 15px;
+    }
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}

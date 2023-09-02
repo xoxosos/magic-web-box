@@ -17,7 +17,6 @@ type DataProps = {
   data: Data
 }
 export const Card = ({ data }: DataProps) => {
-  console.log('data', data)
   const handleClick = (src: string) => {
     window.open(src, '_blank')
   }

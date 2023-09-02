@@ -79,9 +79,13 @@
 }
 
 .card-item {
-  background-color: var(--card-item);
-  margin: 10px 5px 10px 5px;
+  margin: 10px 4px 5px 4px;
   transition: all 0.4s ease;
+  box-shadow: 0 4px 28px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(2.5px);
+  -webkit-backdrop-filter: blur(2.5px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
 
   .title {
     color: var(--text);
@@ -119,8 +123,10 @@
 }
 
 .card-item:hover {
-  transform: scale(1.03) translateY(-6px);
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 26px 40px rgba(0, 36, 100, .3);
+  -webkit-box-shadow: 0 26px 40px rgba(0, 36, 100, .3);
+  -moz-box-shadow: 0 26px 40px rgba(0, 36, 100, .3);
 
   .title {
     color: var(--primary);
@@ -160,15 +166,16 @@
   &::-webkit-scrollbar {
     width: 1px;
     height: 5px;
-    background: white;
+    background: var(--primary);
     scroll-behavior: smooth;
+    cursor: pointer;
   }
 
   &::-webkit-scrollbar-corner,
     /* 滚动条角落 */
   &::-webkit-scrollbar-thumb,
   &::-webkit-scrollbar-track {
-    border-radius: 5px;
+    border-radius: 3px;
   }
 
   &::-webkit-scrollbar-corner,
@@ -178,16 +185,22 @@
     box-shadow: inset 0 0 1px rgba(180, 160, 120, 0.5);
   }
 
+
   &::-webkit-scrollbar-thumb {
     /* 滚动条手柄 */
-    background-color: var(--accent);
+    background-color: var(--primary);
   }
 }
+
 
 .search-input {
   &.rs-input-group-focus {
     border: none;
     outline: none;
+  }
+
+  &.rs-input {
+    color: var(--primary) !important;
   }
 
   &.rs-input:focus {

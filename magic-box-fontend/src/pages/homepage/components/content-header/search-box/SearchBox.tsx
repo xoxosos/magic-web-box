@@ -1,11 +1,3 @@
-/*
- * @Author: LinRenJie
- * @Date: 2023-07-06 16:11:15
- * @LastEditTime: 2023-08-19 01:32:37
- * @Description:
- * @FilePath: \magic-box-fontend\src\components\content-header\search-box\SearchBox.tsx
- * @Email: xoxosos666@gmail.com
- */
 import { Icon } from '@rsuite/icons'
 import HomeIcon from '@rsuite/icons/legacy/Home'
 import SearchIcon from '@rsuite/icons/legacy/Search'
@@ -60,7 +52,7 @@ const SearchBox = () => {
   const [active, setActive] = useState('search')
   const [val, setVal] = useState('')
   const [type, setType] = useState<SearchEngine>('baidu')
-  const inputRef = useRef()
+  const inputRef = useRef<HTMLInputElement>(null)
   const handleClick = (type: SearchEngine) => {
     setType(type)
     setVal('')
@@ -108,7 +100,7 @@ const SearchBox = () => {
             onClick={() => handleClick('baidu')}
             color="blue"
             appearance="primary"
-            startIcon={<Icon as={BiLogoBaidu} size="1rem" />}
+            startIcon={<Icon as={BiLogoBaidu} />}
           >
             Baidu
           </Button>
@@ -116,7 +108,7 @@ const SearchBox = () => {
             onClick={() => handleClick('google')}
             color="red"
             appearance="primary"
-            startIcon={<Icon as={BiLogoGoogle} size="1rem" />}
+            startIcon={<Icon as={BiLogoGoogle} />}
           >
             Google
           </Button>
@@ -124,7 +116,7 @@ const SearchBox = () => {
             onClick={() => handleClick('bing')}
             color="cyan"
             appearance="primary"
-            startIcon={<Icon as={BiLogoBing} size="1rem" />}
+            startIcon={<Icon as={BiLogoBing} />}
           >
             Bing
           </Button>

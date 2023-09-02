@@ -4,30 +4,17 @@
  * @Description:
  */
 import { motion } from 'framer-motion'
-import { fadeIn } from '../../utils/variants'
 import { Col, FlexboxGrid } from 'rsuite'
-import { CardItem } from '../CardItem'
-
-interface ItemProps {
-  id: number
-  name: string
-  image: string
-  description: string
-
-  [key: string]: string | number
-}
-
-interface Props {
-  data: ItemProps[]
-  activeId: number
-}
+import { fadeIn } from '../../../../utils/variants'
+import { CardItem } from '../../../../components/CardItem'
+import { DataProps, Props } from './types'
 
 export const TabContent = ({ data, activeId }: Props) => {
-  console.log('TabContent', data)
+  console.log('TabContent', data, activeId)
   return (
     <div className="show-grid">
       <FlexboxGrid justify="start">
-        {data.map((item: any, index: number) => (
+        {data.map((item: DataProps, index: number) => (
           <FlexboxGrid.Item as={Col} colspan={24} xxl={4} xl={6} lg={6} md={8} sm={12} xs={24} key={item.name}>
             <motion.div
               variants={fadeIn('up', 0.3)}

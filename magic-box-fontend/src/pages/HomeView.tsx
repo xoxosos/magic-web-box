@@ -16,8 +16,7 @@ import ContentLayout from '../layouts/content/ContentLayout'
 import { HeaderLayout } from '../layouts/header/HeaderLayout'
 import { SideLayout } from '../layouts/sidenav/SideLayout'
 import styles from '../layouts/styles/layout.module.less'
-import { MainView } from './main/MainView'
-import { ProductView } from './products/ProductView'
+import { MainView } from './homepage/MainView'
 import { WeatherView } from './weather/WeatherView'
 
 type themeUnionType = 'dark' | 'light' | 'high-contrast' | undefined
@@ -83,7 +82,6 @@ export const HomeView = () => {
             <ContentLayout className="two-col-layout-right-content">
               <Routes>
                 <Route path="/" element={<MainView />} />
-                <Route path="product" element={<ProductView />} />
                 <Route
                   path="weather"
                   element={
