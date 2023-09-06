@@ -1,6 +1,7 @@
 import { Icon } from '@rsuite/icons'
 import CogIcon from '@rsuite/icons/legacy/Cog'
 import HomeIcon from '@rsuite/icons/legacy/Home'
+import ExitIcon from '@rsuite/icons/Exit'
 import GlobalProps from 'globalProps'
 import React from 'react'
 import { BiMenu, BiMenuAltLeft } from 'react-icons/bi'
@@ -30,22 +31,30 @@ export const HeaderLayout = ({ isTop, expand, setExpand, className }: HeaderProp
   const { open, setOpen } = useGlobalContext()
   const { logOut } = useTokenContext()
   return (
-    <Navbar appearance="subtle" style={{ background: !isTop ? undefined : 'var(--rs-body)' }} className={className}>
-      <Navbar.Brand href="#" style={{ display: 'flex', alignItems: 'center' }}>
+    <Navbar
+      appearance="subtle"
+      style={{ background: !isTop ? undefined : 'var(--rs-body)' }}
+      className={`${styles.customHeader} ${className}`}
+    >
+      <Navbar.Brand href="#" className={styles.customHeaderMenu}>
         <CustomIconButton
-          icon={expand ? <Icon as={BiMenuAltLeft} size="2rem" /> : <Icon as={BiMenu} size="2rem" />}
+          icon={
+            expand ? (
+              <Icon as={BiMenuAltLeft} style={{ fontSize: '2rem' }} />
+            ) : (
+              <Icon as={BiMenu} style={{ fontSize: '2rem' }} />
+            )
+          }
           className={styles.showSidebar}
-          expand={expand}
           onChange={() => setExpand(!expand)}
         />
         <AutoFix top={50}>
           <IconButton
-            style={{ background: 'none' }}
             className={styles.showSidebarModal}
             circle
             onClick={() => setOpen(!open)}
             size="sm"
-            icon={<Icon as={BiMenu} size="2rem" />}
+            icon={<Icon as={BiMenu} style={{ fontSize: '2rem' }} />}
           />
         </AutoFix>
       </Navbar.Brand>
@@ -62,9 +71,9 @@ export const HeaderLayout = ({ isTop, expand, setExpand, className }: HeaderProp
           <Nav.Item eventKey="6">...</Nav.Item>
         </Nav.Menu>
       </Nav>
-      <Nav pullRight>
-        <Nav.Menu icon={<CogIcon />}>
-          <Nav.Item eventKey="4" onSelect={logOut}>
+      <Nav pullRight className={styles.customHeaderSetting}>
+        <Nav.Menu icon={<CogIcon />} placement="bottomEnd">
+          <Nav.Item icon={<ExitIcon />} eventKey="4" onSelect={logOut}>
             退出登录
           </Nav.Item>
         </Nav.Menu>

@@ -4,13 +4,23 @@
   display: flex;
 }
 
-.login-form-logo{
+.login-form-logo {
   background-image: url("https://colorlib.com/etc/lf/Login_v1/images/img-01.png");
   background-size: 150px 150px;
   background-repeat: no-repeat;
   background-position: center;
   flex: 0 0 30%;
 }
+
+.button-group {
+  gap: 10px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: center;
+  align-items: center;
+}
+
 .login-button {
   width: 150px;
   height: 60px;
@@ -74,17 +84,30 @@
 
 .login-form-card {
   box-shadow: 12px 12px 23px #a8928b, -12px -12px 23px #f4d3c6;
+  min-width: 335px;
+  padding: 20px;
+  transition: all 0.4s ease-out;
 
-  &.rs-panel {
-    border: none;
-    border-radius: 40px;
-
-    &.rs-panel-bordered {
-      border: none;
-    }
+  &:hover {
+    transform: scale(1.05);
   }
 }
 
-.my-login-form-card-mixin() {
-  .login-form-card;
+:global {
+  .login-form-card {
+    &.rs-panel {
+      border: none;
+      border-radius: 40px;
+
+      &.rs-panel-bordered {
+        border: none;
+      }
+    }
+  }
+
 }
+
+//
+//.my-login-form-card-mixin() {
+//  .login-form-card;
+//}

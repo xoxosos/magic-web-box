@@ -78,7 +78,7 @@ const SearchBox = () => {
     active === 'search' ? (placeholder.get(active) as SearchProps)[type] : (placeholder.get(active) as string)
   return (
     <div className={styles.searchBox}>
-      <h1>Geek之家(GeekHeaven)-收录程序猿常用的高质量资源</h1>
+      <h1>Geek Heaven — 收录程序猿常用的高质量资源</h1>
       <Navbar appearance="subtle" active={active} onSelect={setActive} />
       <InputGroup inside style={style}>
         <Input

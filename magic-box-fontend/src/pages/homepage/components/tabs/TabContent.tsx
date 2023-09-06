@@ -17,7 +17,7 @@ export const TabContent = ({ data, activeId }: Props) => {
         {data.map((item: DataProps, index: number) => (
           <FlexboxGrid.Item as={Col} colspan={24} xxl={4} xl={6} lg={6} md={8} sm={12} xs={24} key={item.name}>
             <motion.div
-              variants={fadeIn('up', 0.3)}
+              variants={fadeIn('up', 0.2)}
               initial="hidden"
               whileInView={'show'}
               viewport={{ once: false, amount: 0.3 }}

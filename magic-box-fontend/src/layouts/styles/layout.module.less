@@ -2,6 +2,19 @@
   display: flex;
 }
 
+.custom-header {
+  .custom-header-setting {
+    padding-right: 8px;
+  }
+
+  .custom-header-menu {
+    display: flex;
+    align-items: center;
+    padding: 18px 5px;
+  }
+}
+
+
 .custom-sidebar {
   display: flex;
   flex-direction: column;
@@ -12,6 +25,7 @@
 
 .show-sidebar-modal {
   display: none !important;
+  background: none;
   @media (max-width: 768px) {
     display: block !important;
   }
@@ -58,7 +72,7 @@
   width: 100%;
   height: 56px;
   z-index: 999;
-  transition: background 0.2s cubic-bezier(0.03, 0.84, 0.62, 0.74);
+  transition: background 0.2s cubic-bezier(0, 0.47, 0.43, 1.16);
 }
 
 .two-col-layout-right-content {

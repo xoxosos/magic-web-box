@@ -1,16 +1,7 @@
-import { IconProps } from '@rsuite/icons/lib/Icon'
-import { MouseEventHandler, ReactElement } from 'react'
+import type { IconButtonProps } from 'rsuite'
 import { IconButton } from 'rsuite'
 
-export const CustomIconButton = ({
-  onChange,
-  className,
-  icon
-}: {
-  expand?: boolean
-  onChange: MouseEventHandler<HTMLElement>
-  className?: string
-  icon: ReactElement<IconProps>
-}) => {
-  return <IconButton className={className} circle onClick={onChange} size="sm" icon={icon} />
+export const CustomIconButton = ({ onChange, icon, size = 'sm', ...restProps }: IconButtonProps) => {
+  return <IconButton circle onClick={onChange} size={size} icon={icon} {...restProps} />
 }
+export default CustomIconButton
