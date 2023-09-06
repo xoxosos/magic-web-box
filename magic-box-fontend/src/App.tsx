@@ -10,21 +10,21 @@ export const App = () => {
   return (
     <Router>
       <AuthProvider>
-        <GlobalProvider>
-          <Routes>
-            <Route path="*" element={<PageNotFound />} />
-            <Route path="/" element={<Navigate to="/home" />} />
-            <Route path="/login" element={<LoginView />} />
-            <Route
-              path="/home/*"
-              element={
-                <PrivateRoute>
+        <Routes>
+          <Route path="*" element={<PageNotFound />} />
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/login" element={<LoginView />} />
+          <Route
+            path="/home/*"
+            element={
+              <PrivateRoute>
+                <GlobalProvider>
                   <HomeView />
-                </PrivateRoute>
-              }
-            />
-          </Routes>
-        </GlobalProvider>
+                </GlobalProvider>
+              </PrivateRoute>
+            }
+          />
+        </Routes>
       </AuthProvider>
     </Router>
   )

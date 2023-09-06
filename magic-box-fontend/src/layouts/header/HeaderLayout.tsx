@@ -10,6 +10,7 @@ import { AutoFix } from '../../components/autofix/AutoFix'
 import { CustomIconButton } from '../../components/buttons/CustomIconButton'
 import { useGlobalContext } from '../../context/global/GlobalContext'
 import styles from '../styles/layout.module.less'
+import { useTokenContext } from '../../context/auth/AuthContext'
 
 interface HeaderProps extends GlobalProps {
   isTop: boolean
@@ -27,6 +28,7 @@ export const HeaderLayout = ({ isTop, expand, setExpand, className }: HeaderProp
   const [activeKey, setActiveKey] = React.useState(pathname || '/home')
   NavLink.displayName = 'NavLink'
   const { open, setOpen } = useGlobalContext()
+  const { logOut } = useTokenContext()
   return (
     <Navbar appearance="subtle" style={{ background: !isTop ? undefined : 'var(--rs-body)' }} className={className}>
       <Navbar.Brand href="#" style={{ display: 'flex', alignItems: 'center' }}>
@@ -61,7 +63,11 @@ export const HeaderLayout = ({ isTop, expand, setExpand, className }: HeaderProp
         </Nav.Menu>
       </Nav>
       <Nav pullRight>
-        <Nav.Item icon={<CogIcon />}></Nav.Item>
+        <Nav.Menu icon={<CogIcon />}>
+          <Nav.Item eventKey="4" onSelect={logOut}>
+            退出登录
+          </Nav.Item>
+        </Nav.Menu>
       </Nav>
     </Navbar>
   )
