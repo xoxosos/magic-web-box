@@ -1,21 +1,18 @@
-import request from '../../../utils/useRequest'
+import request, { IResponse } from '../../../utils/useRequest'
 
-interface Result {
-  data: { token?: string } | null
-  code: number
-  message: string
-}
 interface UserParams {
   username: string
   password: string
   email?: string
 }
 const urlPix = '/user'
-const login = (params: UserParams) => request.get<Result>(urlPix + '/login', { params })
-const getUserList = () => request.get<Result>(urlPix + '/getUserList')
-const getCategories = () => request.get<Result>('categories/getCategories')
+type LoginRes = { token?: string }
 
-const register = (data: UserParams) => request.post<UserParams, Result>(urlPix + '/register', data)
+const login = <T extends LoginRes>(params: UserParams) => request.get<IResponse<T>>(urlPix + '/login', { params })
+const register = <T extends LoginRes>(data: UserParams) =>
+  request.post<UserParams, IResponse<T>>(urlPix + '/register', data)
+const getUserList = <T>() => request.get<IResponse<T>>(urlPix + '/getUserList')
+const getCategories = <T>() => request.get<IResponse<T>>('categories/getCategories')
 
 // 统一导出
 const useLoginApi = {

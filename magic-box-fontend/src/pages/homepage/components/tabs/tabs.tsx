@@ -14,7 +14,7 @@ const Tabs = ({ data, tabIndex }: Props) => {
   const [content, setContent] = useState([])
   const fetchData = async (id: number) => {
     const res = await getResource({ id })
-    const resData = res?.data?.data
+    const resData = res?.data
     resData && setContent(resData as any)
     console.log(resData)
   }

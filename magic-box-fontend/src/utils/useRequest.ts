@@ -1,17 +1,16 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import Cookies from 'react-cookies'
-// 请求配置对象
-type IRequestConfig = AxiosRequestConfig
-
 // 请求返回结果
-interface IResponse<T = object> extends AxiosResponse {
-  data: T
+export interface IResponse<T> {
+  data: T | null
+  code: number
+  message: string
 }
 
 class Request {
   private instance: AxiosInstance
 
-  constructor(config: IRequestConfig) {
+  constructor(config: AxiosRequestConfig) {
     this.instance = axios.create(config)
 
     this.instance.interceptors.request.use(
@@ -42,20 +41,24 @@ class Request {
     )
   }
 
-  public async get<T = object>(url: string, config?: IRequestConfig): Promise<IResponse<T>> {
-    return await this.instance.get<T>(url, config)
+  public async get<T = object>(url: string, config?: AxiosRequestConfig): Promise<T> {
+    const response = await this.instance.get<T>(url, config)
+    return response.data
   }
 
-  public async post<T = object, R = object>(url: string, data: T, config?: IRequestConfig): Promise<IResponse<R>> {
-    return await this.instance.post<R>(url, data, config)
+  public async post<T = object, R = object>(url: string, data: T, config?: AxiosRequestConfig): Promise<R> {
+    const response = await this.instance.post<R>(url, data, config)
+    return response.data
   }
 
-  public async put<T = object>(url: string, data?: T, config?: IRequestConfig): Promise<IResponse<T>> {
-    return await this.instance.put<T>(url, data, config)
+  public async put<T = object>(url: string, data?: T, config?: AxiosRequestConfig): Promise<T> {
+    const response = await this.instance.put<T>(url, data, config)
+    return response.data
   }
 
-  public async delete<T = object>(url: string, config?: IRequestConfig): Promise<IResponse<T>> {
-    return await this.instance.delete<T>(url, config)
+  public async delete<T = object>(url: string, config?: AxiosRequestConfig): Promise<T> {
+    const response = await this.instance.delete<T>(url, config)
+    return response.data
   }
 }
 

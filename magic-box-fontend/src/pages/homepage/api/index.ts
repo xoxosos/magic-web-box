@@ -1,14 +1,9 @@
-import request from '../../../utils/useRequest'
-
-interface Result {
-  data: { [key: string]: string } | null
-  code: number
-  message: string
-}
+import request, { IResponse } from '../../../utils/useRequest'
 
 interface Props {
   id: number
 }
 
 const urlPix = '/resources/'
-export const getResource = (params: Props) => request.get<Result>(urlPix + 'getResource', { params })
+export const getResource = (params: Props) =>
+  request.get<IResponse<{ [key: string]: string }>>(urlPix + 'getResource', { params })

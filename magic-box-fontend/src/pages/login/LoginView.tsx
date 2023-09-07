@@ -10,11 +10,9 @@ import CustomButton from '../../components/buttons/CustomButton'
 import { pushMessage } from '../../components/message/ToasterMessage'
 
 const { StringType } = Schema.Types
-
 const nameRule = StringType().isRequired('请输入用户名')
 const emailRule = StringType().isEmail('请输入正确的邮箱地址')
 const passwordRule = StringType().isRequired('请输入密码')
-
 function LoginView() {
   const [formData, setFormData] = useState({
     username: '',
@@ -33,7 +31,7 @@ function LoginView() {
       return
     }
     const res = type === 'login' ? await useLoginApi.login(formData) : await useLoginApi.register(formData)
-    const { data, code, message } = res?.data || {}
+    const { data, code, message } = res || {}
     if (code !== 0) {
       return pushMessage({ type: 'error', msg: message, toaster })
     }

@@ -29,11 +29,11 @@ export const GlobalProvider: FC<{ children: ReactNode }> = ({ children }) => {
     // 初始化Menu
     const fetchMenuData = async () => {
       try {
-        const res = await useLoginApi.getCategories()
-        const { data, code } = res?.data || {}
+        const res = await useLoginApi.getCategories<iProps>()
+        const { data, code } = res || {}
 
         if (code === 0) {
-          const key = (data as iProps)?.[0]?.children ? (data as iProps)[0].children[0].id : (data as iProps)[0].id
+          const key = data?.[0]?.children ? data?.[0].children[0].id : data?.[0].id || 1
           console.log(data, key, typeof key)
           setKey(key)
           setMenu(data as [])
