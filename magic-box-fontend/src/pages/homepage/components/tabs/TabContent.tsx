@@ -5,8 +5,8 @@
  */
 import { motion } from 'framer-motion'
 import { Col, FlexboxGrid } from 'rsuite'
-import { fadeIn } from '../../../../utils/variants'
 import { CardItem } from '../../../../components/CardItem'
+import { fadeIn } from '../../../../utils/variants'
 import { DataProps, Props } from './types'
 
 export const TabContent = ({ data, activeId }: Props) => {
@@ -20,7 +20,7 @@ export const TabContent = ({ data, activeId }: Props) => {
               variants={fadeIn('up', 0.2)}
               initial="hidden"
               whileInView={'show'}
-              viewport={{ once: false, amount: 0.3 }}
+              viewport={{ once: true, amount: 0.3 }}
             >
               <CardItem data={item} />
             </motion.div>

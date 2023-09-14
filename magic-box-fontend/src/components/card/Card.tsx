@@ -23,7 +23,7 @@ export const Card = ({ data }: DataProps) => {
   return (
     <Panel className="card-item" onClick={() => handleClick(data.link as string)}>
       <div className="card-item-header">
-        <Avatar size="lg" circle src={data.image} alt="@SevenOutman" />
+        <Avatar size="lg" circle src={data.image} alt="@SevenOutman" style={{ background: 'transparent' }} />
         <div style={{ overflow: 'hidden', padding: '0 5px 0 5px', flex: '1 1 auto' }}>
           <div className="highlight">
             <h5 className="title  single-line ">{data.name}</h5>
