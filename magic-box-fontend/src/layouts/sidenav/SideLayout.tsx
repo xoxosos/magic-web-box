@@ -5,13 +5,18 @@ import { CSSProperties, Fragment, useEffect, useState } from 'react'
 import { flushSync } from 'react-dom'
 import { Nav, Sidebar, Sidenav } from 'rsuite'
 import { useGlobalContext } from '../../context/global/GlobalContext'
-
+import { AiOutlineDesktop, AiOutlineConsoleSql, AiOutlineRobot, AiOutlineAppstore } from 'react-icons/ai'
+import { ReactIcon } from '../../components/icon/ReactIcon'
 interface Props {
   id: number
   name: string
   children: Props[]
 }
-
+const iconState = new Map()
+iconState.set(1, AiOutlineDesktop)
+iconState.set(2, AiOutlineConsoleSql)
+iconState.set(24, AiOutlineRobot)
+iconState.set(25, AiOutlineAppstore)
 const headerStyles = {
   padding: '18px 18px 18px 9px',
   fontSize: 16,
@@ -86,16 +91,26 @@ export const SideLayout = ({
                 <Fragment key={item.id}>
                   {item.children.length > 0 ? (
                     <Nav.Menu
-                      style={{ fontSize: '15px' }}
+                      style={{ fontSize: '14px' }}
                       onClick={() => scrollToRef(i)}
                       title={item.name}
                       eventKey={item.id.toString()}
-                      icon={<MagicIcon />}
+                      icon={
+                        <ReactIcon
+                          icon={iconState.get(item.id)}
+                          styles={{
+                            fontSize: '2em',
+                            height: '20px',
+                            left: expand ? '21px' : '13px',
+                            transition: 'left .2s ease'
+                          }}
+                        />
+                      }
                     >
                       {item.children.map((child: Props) => {
                         return (
                           <Nav.Item
-                            style={{ fontSize: '15px' }}
+                            style={{ fontSize: '14px' }}
                             onClick={() => itemClick(child.id)}
                             key={child.id}
                             eventKey={child.id.toString()}
