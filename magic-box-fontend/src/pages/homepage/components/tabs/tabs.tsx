@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useGlobalContext } from '../../../../context/global/GlobalContext'
 import { getResource } from '../../api'
-import { TabContent } from './TabContent'
-import { TabHeader } from './TabHeader'
+import EmptyDataBox from './components/EmptyDataBox'
+import { TabContent } from './components/TabContent'
+import { TabHeader } from './components/TabHeader'
 import styles from './tab.module.less'
 import { Props } from './types'
 
@@ -44,7 +45,7 @@ const Tabs = ({ data, tabIndex }: Props) => {
   return (
     <div className={styles.tabsBody}>
       <TabHeader data={data} click={changeTabOnClick} activeId={activeTab} />
-      {content.length > 0 && <TabContent data={content} activeId={activeTab} />}
+      {content.length > 0 ? <TabContent data={content} activeId={activeTab} /> : <EmptyDataBox />}
     </div>
   )
 }

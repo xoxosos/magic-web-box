@@ -3,13 +3,12 @@
  * @Date: 2023-07-26 20:40:41
  * @Description:
  */
-import ImageWrapper from './components/content-header/ImageWrapper'
-import Tabs from './components/tabs/tabs'
 import { useGlobalContext } from '../../context/global/GlobalContext'
+import ImageWrapper from './components/content-header/ImageWrapper'
+import Tabs from './components/tabs/Tabs'
 
 export function MainView() {
-  const { menu } = useGlobalContext()
-  const { index, selectedRef } = useGlobalContext()
+  const { index, selectedRef, menu } = useGlobalContext()
 
   if (!menu) {
     return <div>loading...</div>

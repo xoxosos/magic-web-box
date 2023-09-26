@@ -5,9 +5,9 @@
  */
 import { motion } from 'framer-motion'
 import { Col, FlexboxGrid } from 'rsuite'
-import { CardItem } from '../../../../components/CardItem'
-import { fadeIn } from '../../../../utils/variants'
-import { DataProps, Props } from './types'
+import { CardItem } from '../../../../../components/CardItem'
+import { fadeIn } from '../../../../../utils/variants'
+import { DataProps, Props } from '../types'
 
 export const TabContent = ({ data, activeId }: Props) => {
   console.log('TabContent', data, activeId)

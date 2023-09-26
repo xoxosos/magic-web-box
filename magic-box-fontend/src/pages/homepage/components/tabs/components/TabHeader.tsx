@@ -1,5 +1,5 @@
-import styles from './tab.module.less'
-import { Props } from './types'
+import styles from '../tab.module.less'
+import { Props } from '../types'
 
 export const TabHeader = ({ data, click, activeId }: Props) => {
   return (
