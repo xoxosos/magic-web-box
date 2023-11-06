@@ -3,6 +3,8 @@ package com.acelin.magicbox.entity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+
+import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import lombok.Getter;
@@ -23,6 +25,7 @@ import lombok.experimental.Accessors;
 @TableName("resources")
 public class Resources implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     @TableId("id")

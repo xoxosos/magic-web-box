@@ -2,8 +2,12 @@ package com.acelin.magicbox.utils;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+/**
+ * @author AceLin
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -13,6 +17,7 @@ public class Result<T> {
     private T data;
 
     // 定义一个枚举或常量类来管理错误码和对应的消息
+    @Getter
     public enum ErrorCode {
         SUCCESS(0, "Success"),
         GENERAL_ERROR(500, "An error occurred");
@@ -25,13 +30,6 @@ public class Result<T> {
             this.message = message;
         }
 
-        public int getCode() {
-            return code;
-        }
-
-        public String getMessage() {
-            return message;
-        }
     }
 
     // 使用 ErrorCode 定义错误码

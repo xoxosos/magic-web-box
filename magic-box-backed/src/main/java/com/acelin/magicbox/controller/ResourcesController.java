@@ -27,6 +27,11 @@ public class ResourcesController {
     public ResourcesController(IResourcesService iResourcesService) {
         this.iResourcesService = iResourcesService;
     }
+
+    /**
+     *
+     * @param id id
+     */
     @GetMapping("/getResource")
     public Result<List<Resources>> getResources(@RequestParam("id") long id){
         System.out.println(id);
