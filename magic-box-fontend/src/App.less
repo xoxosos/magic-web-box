@@ -20,14 +20,21 @@
   height: 100vh;
 }
 
+.two-col-layout-right-content {
+  height: 100vh;
+  width: 100%;
+  overflow-y: auto;
+}
+
 .My-NavBar {
   background: linear-gradient(to right, #ff00ff, #00ffff, #ffff00) !important;
   transition: background-color 1s initial !important;
+
+  &:hover {
+    background: linear-gradient(to right, #ff0000, #00ff00, #0000ff) !important;
+  }
 }
 
-.My-NavBar:hover {
-  background: linear-gradient(to right, #ff0000, #00ff00, #0000ff) !important;
-}
 
 /* 滚动条凹槽的颜色，还可以设置边框属性 */
 *::-webkit-scrollbar-track-piece {
@@ -77,6 +84,29 @@
   justify-content: center;
 }
 
+
+
+.highlight {
+  z-index: 5;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  &::before {
+    content: '';
+    height: 50%;
+    width: 100%;
+    display: block;
+    z-index: -5;
+    opacity: 30%;
+    position: absolute;
+    transition: all 0.3s ease;
+    background: red;
+  }
+}
+
+
 .card-item {
   margin: 10px 4px 5px 4px;
   transition: all 0.4s ease;
@@ -86,6 +116,22 @@
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 26px 40px rgba(0, 36, 100, 0.3);
+    -webkit-box-shadow: 0 26px 40px rgba(0, 36, 100, 0.3);
+    -moz-box-shadow: 0 26px 40px rgba(0, 36, 100, 0.3);
+
+    & .title {
+      color: var(--primary);
+    }
+
+    & .highlight::before {
+      transition: all 0.3s ease;
+      height: 100%;
+    }
+  }
+
   .title {
     color: var(--text);
   }
@@ -93,48 +139,8 @@
   .rs-panel-body {
     padding: 12px 13px 13px 13px;
   }
-}
 
-.highlight {
-  z-index: 5;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
 
-.highlight::before {
-  content: '';
-  height: 50%;
-  width: 100%;
-  display: block;
-  z-index: -5;
-  opacity: 30%;
-  position: absolute;
-  transition: all 0.3s ease;
-  background: red;
-}
-
-.two-col-layout-right-content {
-  height: 100vh;
-  width: 100%;
-  overflow-y: auto;
-}
-
-.card-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 26px 40px rgba(0, 36, 100, 0.3);
-  -webkit-box-shadow: 0 26px 40px rgba(0, 36, 100, 0.3);
-  -moz-box-shadow: 0 26px 40px rgba(0, 36, 100, 0.3);
-
-  .title {
-    color: var(--primary);
-  }
-
-  .highlight::before {
-    transition: all 0.3s ease;
-    height: 100%;
-  }
 }
 
 .card-item-header {
@@ -171,7 +177,7 @@
   }
 
   &::-webkit-scrollbar-corner,
-    /* 滚动条角落 */
+  /* 滚动条角落 */
   &::-webkit-scrollbar-thumb,
   &::-webkit-scrollbar-track {
     border-radius: 3px;
@@ -222,18 +228,26 @@
 
 .single-line {
   // word-break: break-all;
-  white-space: nowrap; /* 文本不换行 */
-  overflow: hidden; /* 超出容器部分隐藏 */
-  text-overflow: ellipsis; /* 使用省略号表示被截断的文本 */
+  white-space: nowrap;
+  /* 文本不换行 */
+  overflow: hidden;
+  /* 超出容器部分隐藏 */
+  text-overflow: ellipsis;
+  /* 使用省略号表示被截断的文本 */
 }
 
 .double-line {
   // word-break: break-all;
-  display: -webkit-box; /* 使用WebKit引擎的box布局 */
-  -webkit-box-orient: vertical; /* 垂直方向排列 */
-  -webkit-line-clamp: 2; /* 最多显示2行文本 */
-  overflow: hidden; /* 超出容器部分隐藏 */
-  text-overflow: ellipsis; /* 使用省略号表示被截断的文本 */
+  display: -webkit-box;
+  /* 使用WebKit引擎的box布局 */
+  -webkit-box-orient: vertical;
+  /* 垂直方向排列 */
+  -webkit-line-clamp: 2;
+  /* 最多显示2行文本 */
+  overflow: hidden;
+  /* 超出容器部分隐藏 */
+  text-overflow: ellipsis;
+  /* 使用省略号表示被截断的文本 */
 }
 
 .over-line {
@@ -265,6 +279,7 @@
   position: absolute;
   height: 700px;
   width: 100%;
+
   @media (min-width: 0px) and (max-width: 600px) {
     /* 在宽度在 0 到 400 像素之间时应用的样式 */
     height: 300px;

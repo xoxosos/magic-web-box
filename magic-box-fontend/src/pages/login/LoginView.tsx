@@ -1,13 +1,13 @@
 import { useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { FlexboxGrid, Form, FormInstance, Panel, Schema, useToaster } from 'rsuite'
+import CustomButton from '../../components/buttons/CustomButton'
+import FormGroup from '../../components/form/FormGroup'
+import { pushMessage } from '../../components/message/ToasterMessage'
 import { useTokenContext } from '../../context/auth/AuthContext'
+import LoginButton from './components/LoginButton'
 import styles from './login.module.less'
 import useLoginApi from './service'
-import FormGroup from '../../components/form/FormGroup'
-import LoginButton from './components/LoginButton'
-import CustomButton from '../../components/buttons/CustomButton'
-import { pushMessage } from '../../components/message/ToasterMessage'
 
 const { StringType } = Schema.Types
 const nameRule = StringType().isRequired('请输入用户名')
@@ -67,16 +67,14 @@ function LoginView() {
                 }}
               />
               {isLogin ? null : (
-                <>
-                  <FormGroup
-                    label="邮箱"
-                    rule={emailRule}
-                    name="email"
-                    controlProps={{
-                      onChange: (value) => handleChange(value, 'email')
-                    }}
-                  />
-                </>
+                <FormGroup
+                  label="邮箱"
+                  rule={emailRule}
+                  name="email"
+                  controlProps={{
+                    onChange: (value) => handleChange(value, 'email')
+                  }}
+                />
               )}
               <FormGroup
                 label="密码"

@@ -1,12 +1,11 @@
 import logo from '@/assets/images/logo.png'
 import DashboardIcon from '@rsuite/icons/legacy/Dashboard'
-import MagicIcon from '@rsuite/icons/legacy/Magic'
 import { CSSProperties, Fragment, useEffect, useState } from 'react'
 import { flushSync } from 'react-dom'
+import { AiOutlineAppstore, AiOutlineConsoleSql, AiOutlineDesktop, AiOutlineRobot } from 'react-icons/ai'
 import { Nav, Sidebar, Sidenav } from 'rsuite'
-import { useGlobalContext } from '../../context/global/GlobalContext'
-import { AiOutlineDesktop, AiOutlineConsoleSql, AiOutlineRobot, AiOutlineAppstore } from 'react-icons/ai'
 import { ReactIcon } from '../../components/icon/ReactIcon'
+import { useGlobalContext } from '../../context/global/GlobalContext'
 interface Props {
   id: number
   name: string
@@ -67,9 +66,8 @@ export const SideLayout = ({
     // 滚动到对应的区域
     if (selectedRef.current) {
       selectedRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-        inline: 'nearest'
+        alignToTop: true,
+        behavior: 'smooth'
       })
     }
   }, [index])
